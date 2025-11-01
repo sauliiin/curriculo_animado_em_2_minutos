@@ -87,7 +87,7 @@ body {
     min-height: 0;
     height: auto;
     justify-content: flex-start; /* Alinha o conteúdo ao topo */
-    padding-top: 5vh; /* Espaço interno reduzido */
+    padding-top: 5vh; 
     transform: translateY(-15vh); /* Puxa para cima (valor igual ao padding-top) */
 }
 
@@ -323,7 +323,7 @@ a:hover {
     line-height: 1.5;
 }
 
-.mobile-click-hint {
+.mobile-click-hint, .mobile-click-hint2 {
     display: none; /* Escondido por padrão (no desktop) */
     font-size: 0.9rem;
     color: var(--primary-color);
@@ -332,7 +332,7 @@ a:hover {
     font-weight: 700;
 }
 
-.mobile-click-hint {
+.mobile-click-hint, .mobile-click-hint2 {
     display: none; /* Escondido por padrão (no desktop) */
     font-size: 0.9rem;
     color: var(--primary-color);
@@ -599,14 +599,41 @@ a:hover {
     /* 2. Ajusta a largura dos containers grandes */
     #hero .hero-photos {
         width: 90vw;  /* Usa 90% da largura da tela */
-        height: 70vw; /* Altura automática baseada na largura */
-        max-width: 400px; /* Limite */
+        height: 70vw; 
+        max-width: 400px; 
         max-height: 350px;
     }
 
     #hobbies .carousel-container {
-        width: 100%; /* Ocupa 100% da largura */
+        width: 100%;
         height: 300px;
+    }
+    
+    #prefeitura .fluxo-container {
+        width: 100%; 
+    }
+
+    #prefeitura .fluxo-container img {
+        width: 100%; /* Imagem se ajusta ao container */
+    }
+    
+    #fluxao-wrapper {
+        width: 90vw; 
+        height: 50vh; /* Altura menor no mobile */
+    }
+    
+    #educacao .education-gallery {
+        width: 90vw; 
+        max-width: 300px;
+    }
+    
+    #educacao .education-gallery img {
+        width: 100%; 
+    }
+
+    .mobile-click-hint,
+    .mobile-click-hint2 {
+        display: block; /* Mostra o "Click on me!" no mobile */
     }
 
     #fluxo-popover {

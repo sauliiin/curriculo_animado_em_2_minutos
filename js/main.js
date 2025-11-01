@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroIntroTimeline = gsap.timeline(); 
     
     heroIntroTimeline
-        .to({}, { duration: 2.8 }) 
+        .to({}, { duration: 2.7 }) 
         .to('#foto1', { 
             opacity: 0, 
             duration: 0.7, 
@@ -45,6 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const slides = gsap.utils.toArray('#hobbies .carousel-slide');
+    const fadeTime = 0.5; 
+    const stayTime = 1.8; 
+
+    // Define o estado inicial (primeiro slide visível, resto escondido)
+    gsap.set(slides[0], { opacity: 1, visibility: 'visible' });
+    gsap.set(slides.slice(1), { opacity: 0, visibility: 'hidden' });
+
     const slidesTL = gsap.timeline({
         scrollTrigger: {
             trigger: '.carousel-container',
@@ -54,12 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         repeat: -1 
     });
     
-    const slides = gsap.utils.toArray('#hobbies .carousel-slide');
-    const fadeTime = 0.5; 
-    const stayTime = 1.8; 
-
-    slidesTL.to(slides[0], { opacity: 1, duration: fadeTime });
-
+    // Constrói a timeline de loop
     slides.forEach((slide, i) => {
         const nextSlide = slides[(i + 1) % slides.length];
         
@@ -93,8 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hintText = document.querySelector('.mobile-click-hint');
         let hintClicked = false;
         
-        fluxoContainer.addEventListener('click', () => {
-            
+        fluxoContainer.addEventListener('click', () => {         
             // Esconde o hint no primeiro clique e marca como clicado
             if (hintText && !hintClicked) {
                 gsap.to(hintText, { opacity: 0, duration: 0.3, onComplete: () => hintText.style.display = 'none' });
@@ -134,9 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 1, y: 0, stagger: 0.25,
         scrollTrigger: { trigger: '#fluxo-popover', start: 'top 90%' }
     });
-    // --- FIM DA LÓGICA DO FLUXO ---
+ 
     
-
     // --- 4. PANDEMIA & AUTOMAÇÃO  ---
     gsap.to('#pandemia h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#pandemia h2', start: 'top 80%' } });
     gsap.to('#pandemia p', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#pandemia p', start: 'top 80%' } });
@@ -226,8 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 estagioVideo.pause();
                 estagioVideo.currentTime = 0; // Reinicia o video
             });
-            
-            videoContainer.addEventListener('click', () => { // Adicionado para clique/toque no mobile
+
+            // Adiciona clique para mobile
+            videoContainer.addEventListener('click', () => { 
                 if (estagioVideo.paused) {
                     estagioVideo.play();
                 } else {

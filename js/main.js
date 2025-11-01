@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = gsap.utils.toArray('#hobbies .carousel-slide');
     const fadeTime = 0.5; 
     const stayTime = 1.8; 
+
+    // (As linhas 'gsap.set' problemáticas foram removidas)
+
     const slidesTL = gsap.timeline({
         scrollTrigger: {
             trigger: '.carousel-container',
@@ -57,6 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         repeat: -1 
     });
     
+    // Diz à timeline para começar fazendo o fade in do primeiro slide
+    slidesTL.to(slides[0], { opacity: 1, duration: fadeTime });
+
     // Constrói a timeline de loop
     slides.forEach((slide, i) => {
         const nextSlide = slides[(i + 1) % slides.length];
@@ -91,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hintText = document.querySelector('.mobile-click-hint');
         let hintClicked = false;
         
-        fluxoContainer.addEventListener('click', () => {         
+        fluxoContainer.addEventListener('click', () => { 
             // Esconde o hint no primeiro clique e marca como clicado
             if (hintText && !hintClicked) {
                 gsap.to(hintText, { opacity: 0, duration: 0.3, onComplete: () => hintText.style.display = 'none' });

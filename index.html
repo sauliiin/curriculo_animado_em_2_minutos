@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saulo Hugo Rossi - Currículo Animado</title>
+    
+    <meta name="description" content="Meu currículo animado em 2 minutos. Conheça a trajetória de Saulo Hugo Rossi, da advocacia à tecnologia.">
+    <meta property="og:title" content="Saulo Hugo Rossi - Currículo Animado">
+    <meta property="og:description" content="Uma apresentação interativa da minha carreira e projetos.">
+    <meta property="og:image" content="assets/foto2.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" href="assets/foto2.png" as="image">
+    <link rel="preload" href="assets/fluxo.png" as="image">
+    <link rel="preload" href="assets/fluxao.png" as="image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="animate-bg">
+
+    <div id="progress-bar"></div>
+
+    <main>
+        <section id="hero" class="panel">
+            <h1 class="hero-title">Meu currículo animado em 2 minutos</h1>
+            <h2 class="hero-subtitle">Sou Saulo Hugo Rossi, formado em Direito (UFMG), Analise em Desenvolvimento de Sistemas (Newton Paiva) e concluindo Ciências da Computação.</h2>
+            <div class="hero-photos">
+                <img src="assets/foto1.png" alt="Foto divertida (não é o Saulo)" id="foto1">
+                <p id="photo-caption">Ops! Mentira, sou este! Informal e sempre animado!</p>
+                <img src="assets/foto2.png" alt="Foto real do Saulo" id="foto2">
+            </div>
+        </section>
+
+        <section id="hobbies" class="panel">
+            <h2>Sempre curioso e apaixonado por TI, tinha o desenvolvimento como hobbie:</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="assets/img1.png" alt="Nintendo Switch Hack">
+                    <div class="overlay-text">
+                        <a href="https://github.com/sauliiin/4IFIR-Wizard/tree/main/4IFIR%20Wizard" target="_blank" rel="noopener noreferrer">Criação de apps e perfis de overclock para Nintendo Switch (.ini, .json) — com manipulação por HEX (super seguro 🤐) 🤫🏴‍☠️</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img2.png" alt="Patinete Elétrico Firmware">
+                    <div class="overlay-text">Firmware para patinete elétrico (via ST-Link) 😅</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img3.png" alt="Patinete Elétrico Firmware">
+                    <div class="overlay-text">
+                        <a href="https://github.com/sauliiin/BetterFlix" target="_blank" rel="noopener noreferrer">Estragando patinete após hackear demais 🥲</a>
+                    </div>
+                </div>
+                 <div class="carousel-slide">
+                    <img src="assets/img4.png" alt="BetterFlix">
+                    <div class="overlay-text">Criei minha própria "Netflix" (BetterFlix) 😎</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img4a.png" alt="BetterFlix">
+                    <div class="overlay-text">Exige manipular arquivos xml (um misto de html com css roots), o que é surpreendentemente uma delícia</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img5.png" alt="Sites">
+                    <div class="overlay-text">Criei alguns sites para organizar a rotina da minha equipe</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img5a.png" alt="Sites">
+                    <div class="overlay-text">A lógica e os desafios criativos para encontrar soluções sempre me atraíram</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img6.png" alt="Sites">
+                    <div class="overlay-text">Conseguimos ver as férias de cada um, quem vai estar presencial no dia e facilita o rodizio de computadores no regime híbrido</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prefeitura" class="panel">
+            <div class="timeline-content">
+                <p class="timeline-text">Em 2019 comprei a ideia de criar um sistema para a Prefeitura de Belo Horizonte que permitisse a digitalização dos processos de papéis.</p>
+                <p class="timeline-text">Foi então que percebi 🤔💡:<strong> com minha sólida experiência jurídica, adquiri uma visão analítica de processos e a habilidade para desenvolver soluções de TI eficientes 🦸🏻‍♂️</strong>, passando a atuar também como analista de sistemas.</p>
+                <p class="timeline-text">Simplificando: este é o fluxo de um sistema que criei com 3 colegas, onde julgamos mais de <strong>20.000</strong> processos.</p>
+            </div>
+            <div class="fluxo-container">
+                <img src="assets/fluxo.png" alt="Fluxo do processo — versão compacta" id="fluxo-img" tabindex="0">
+                <img src="assets/processo.png" alt="Visão do processo (detalhe)" id="processo-img">
+                <p class="mobile-click-hint"><strong>Click on me 👆🏻!</strong></p>
+                <div id="fluxo-popover" role="tooltip" aria-hidden="true">
+                    <p>O cidadão apresenta uma defesa (prazo ou cancelamento).</p>
+                    <p>Se cancelamento → Regional anexa docs.</p>
+                    <p>Distribuído para uma das 5 Juntas (podem pedir auxílio a experts).</p>
+                    <p>Cancelado → segue para a Fazenda.</p>
+                    <p>Indeferido sem recurso → arquivado.</p>
+                    <p>Se houver recurso → vai para uma das Turmas.</p>
+                    <p>Em caso de erro → retorna às Juntas.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pandemia" class="panel">
+            <h2>Em 2020 veio o maior desafio: a pandemia!</h2>
+            <p>Junto com uma colega, construímos um fluxo bem maior, e com uma equipe contratada, trabalhamos para implementar os seguintes serviços na plataforma SYDLE ONE:</p>
+            <div class="service-links">
+                <a href="https://servicos.pbh.gov.br/i/5e5ecdfae1bf5e706b1c9d82/servicos+defesa-contra-autos-emitidos-pela-fiscalizacao" target="_blank" rel="noopener noreferrer">Defesa (1ª Instância)</a>
+                <a href="https://servicos.pbh.gov.br/i/5eb40fabcf23934c43693261/servicos+recurso-contra-decisao-das-juntas-integradas-de-julgamento-fiscal-2-instancia" target="_blank" rel="noopener noreferrer">Recurso (2ª Instância)</a>
+                <a href="https://servicos.pbh.gov.br/servicos/i/620571b74164c62f6499f715/5dc8470253fd6b5bbd99185f/servicos+desistencia-de-defesa-ou-recurso-referente-a-fiscalizacao-de-controle-urbanistico-e-ambiental?s=6279169d6e88713dfacba115" target="_blank" rel="noopener noreferrer">Desistência</a>
+                <a href="https://servicos.pbh.gov.br/servicos+anexar-novos-documentos-de-defesa-ou-recurso-referentes-a-fiscalizacao-de-controle-urbanistico-e-ambiental+6364fec5e959e52d9a2c694e" target="_blank" rel="noopener noreferrer">Anexar Documentos</a>
+            </div>
+            <p>Yep! Toda a descrição, material, esclarecimentos e links destes serviços foi criado por mim.</p>
+        </section>
+
+        <section id="fluxao" class="panel">
+            <h2>O processo que era digitalizado, virou digital.</h2>
+            <p>O fluxo cresceu, ganhou subfluxo e ficou mais claro. Não se engane pelo tamanho, sou apaixonado pela simplificação, mas simplificar não significa reduzir!</p>
+            <p>Etapas foram automatizadas e timers foram criados. Isso reduziu minha equipe pela metade e o <strong>prazo médio de julgamento caiu de 90 para 30 dias.</strong></p>
+            <div id="fluxao-wrapper">
+                 <img src="assets/fluxao.png" alt="fluxao com subfluxo — zoomável" id="fluxao-img">
+            </div>
+            <p class="instruction">A imagem "fluxao.png", com opção de zoom. Alguns trechos foram ocultados por questões de privacidade e ética profissional.</p>
+        </section>
+        
+        <section id="educacao" class="panel">
+            <div class="education-text">
+                <h2>Finalmente, em 2022, chegou a hora de virar Dev com diplomas!</h2>
+                <p>Cursei Análise em Desenvolvimento de Sistemas (Newton Paiva) e, já no começo, acelerei 🏃🏻‍♀️‍➡️ em participar de grupo de pesquisas e diversos cursos, de hardware, Python (básico ao avançado), JavaScript, dados, CSS... com uma sede enorme em aprender rápido.</p>
+            </div>
+            <div class="education-gallery">
+            </div>
+            <div class="education-text2">
+                <p>Na faculdade, sempre me destaquei pelo backend, mas eventualmente polia o CSS e HTML.</p>
+                <p>Em 2024 eu devo ter tido um surto 😅 porque eu comecei minha terceira graduação, rsrsrs: Ciências da Computação! Na verdade, eu queria aprofundar mais.</p>
+            </div>
+        </section>
+        
+        <section id="estagio" class="panel">
+            <h2>Em Jan/2025, a enorme sorte:</h2>
+            <p>Me juntei a um Mestre Jedi, e enquanto padawan, comecei como estagiário/assistente de um dev sênior em Python excepcional, que me ajuda a praticar metodologias ágeis (Scrum, Kanban) e me ensina muito sobre <strong>otimização de código, TDD, pytest, manipulação de dados, APIs (Flask/FastAPI) e Docker.</strong></p>
+            <p>Eu não posso postar meu código desenvolvido com o Mestre, em razão de sigilo e ética, mas segue uma breve demonstração dos meus códigos, para ter um vislumbre como minha cabeça funciona 🤯 (se está no celular, clique no vídeo).</p>
+            <div class="video">
+                <video id="estagio-video" src="assets/video.webm" muted loop playsinline>
+                    Seu navegador não suporta o vídeo webm.
+                </video>
+            </div>
+            <p class="mobile-click-hint"><strong>Eiii... Vc clicou ali? 👆🏻</strong></p>
+            <div class="tech-flow">
+                <div class="tech-icon" id="docker-icon">🐳 Docker</div>
+                <div class="tech-arrow">→</div>
+                <div class="tech-icon" id="api-icon">🔗 API Request</div>
+                <div class="tech-arrow">→</div>
+                <div class="tech-icon" id="response-icon">📄 JSON Response</div>
+            </div>
+        </section>
+
+        <section id="betterflix" class="panel">
+            <h2>Como sou inquieto...</h2>
+            <p>Tenho sempre projetos em andamento e alguns que nunca acabam 🙃, porque sempre estou acrescentando funcionalidades <a href="https://github.com/sauliiin/BetterFlix" target="_blank" rel="noopener noreferrer">BetterFlix</a>, integrando APIs para reviews, trailers e notas. E até descobri que gosto e sou bom no front-end 😅!</p>
+            <p>Já este playground <a href="https://github.com/sauliiin/Managing-vacation-and-hybrid-work" target="_blank" rel="noopener noreferrer">Managing-vacation-and-hybrid-work</a>, possui tantas funcionalidades e é tão útil, que outro dia fui acrescentar um funcionário através do código e me dei conta de que o site já possuía esta funcionalidade em sua interface 🫠!</p>
+            <p>Minha paixão pela tecnologia não se esgotam nos códigos, gosto de modificar hardware, otimizar todos os sistemas que utilizo, realizar automações desde o android, windows, alexa.</p>
+            <p><strong>A inteligência artificial pode apoiar, mas a criatividade é essencialmente humana e é a curiosidade, somada à prática, que a nutre. Sou movido pela curiosidade, busco sempre entregar o meu melhor e acredito que há sempre algo novo a aprender. Minha paixão pela lógica da programação e por desafios me impulsa a querer sempre chegar mais longe.</strong></p>
+        </section>
+
+        <section id="skills" class="panel">
+            <h2>Skills</h2>
+            <p><strong>Linguagens: </strong>Python, JavaScript (ES6+), HTML, CSS, SQL</p>
+            <p><strong>Frameworks/Bibliotecas: </strong>FastAPI, Flask, React, Node.js, Express</p>
+            <p><strong>Banco de Dados: </strong>MySQL, SQLite, Firestone (Firebase)</p>
+            <p><strong>Ferramentas: </strong>Git, GitHub, Docker, Docker Compose, Grafana</p>
+            <p><strong>Outros: </strong>REST APIs, GraphQL, pytest (testes), Pandas, NLP (coleta e análise de tweets), CI/CD (GitHub Actions), observability</p>
+        </section>
+        
+        <section id="cta" class="panel">
+            <h2>Este sou eu!</h2>
+            <p>Se vc chegou até aqui, pode abrir seu presente!</p>
+            <button id="present-button" aria-label="Abrir contato">🎁 Clique aqui</button>
+        </section>
+
+    </main>
+
+    <div id="contact-modal" aria-hidden="true">
+        <div class="modal-content">
+            <button id="close-modal" aria-label="Fechar">&times;</button>
+            <h3>Dev Júnior com sede de aprender</h3>
+            <p><strong>Telefone:</strong> <span id="phone-number">(31)99201-4352</span></p>
+            <div class="modal-buttons">
+                <button id="copy-phone">Copiar Telefone</button>
+                <a href="https://www.linkedin.com/in/saulo-hugo-rossi-658760165/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/sauliiin?tab=repositories" target="_blank" rel="noopener noreferrer">Github</a>
+                <a href="/assets/Saulo_Rossi_FullStack_Developer.pdf" download>Download CV (PDF)</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+/* --- Reset Básico e Variáveis --- */
+:root {
+    --bg-dark-purple: #1B0B2A;
+    --bg-light-purple: #2E2A88;
+    --text-color: #F0F0F0;
+    --primary-color: #00E0FF;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Estilo do Negrito --- */
+p strong {
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* --- Reset Global --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Configurações do Body --- */
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 300;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background: linear-gradient(90deg, var(--bg-dark-purple) 50%, var(--bg-light-purple) 100%);
+    background-attachment: fixed;
+    background-size: 200% 200%;
+    transition: background 0.5s ease-in-out;
+}
+
+/* --- Animação do Fundo --- */
+@keyframes bgShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-bg {
+    animation: bgShift 10s ease infinite;
+}
+
+/* --- Barra de Progresso --- */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background-color: var(--primary-color);
+    width: 0%;
+    z-index: 1000; /* Deve estar acima de todos os painéis */
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* --- Estrutura Padrão dos Painéis --- */
+.panel {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(3rem, 8vh, 8rem) 2rem;
+    position: relative;
+    text-align: center;
+}
+
+/* --- Lógica de Sobreposição Responsiva --- */
+/* Define o espaçamento inferior para todos os painéis, exceto o último */
+.panel:not(:last-child) {
+    padding-bottom: 5vh;
+}
+
+/* Libera a altura e puxa para cima TODOS OS PAINÉIS, exceto o primeiro */
+.panel:not(:first-child) {
+    min-height: 0;
+    height: auto;
+    justify-content: flex-start; /* Alinha o conteúdo ao topo */
+    padding-top: 5vh; /* Espaço interno reduzido */
+    transform: translateY(-15vh); /* Puxa para cima (valor igual ao padding-top) */
+}
+
+/* Define a ordem de empilhamento (z-index) */
+#hero { z-index: 1; }
+#hobbies { z-index: 2; }
+#prefeitura { z-index: 3; }
+#pandemia { z-index: 4; }
+#fluxao { z-index: 5; }
+#educacao { z-index: 6; }
+#estagio { z-index: 7; }
+#betterflix { z-index: 8; }
+#skills { z-index: 9; }
+#cta { z-index: 10; }
+
+/* O Hero é o primeiro, tem regras especiais */
+#hero {
+    transform: none;
+    min-height: 0;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 4vh; 
+    padding-bottom: 15vh; 
+}
+
+/* O CTA é o último, re-centraliza o conteúdo */
+#cta {
+    transform: none; 
+    justify-content: center; 
+    min-height: auto; 
+    height: auto; 
+    padding-top: 5vh; 
+    padding-bottom: 25vh; 
+}
+
+/* --- Configurações de Texto --- */
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+h1, h2 {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p, a {
+    max-width: 650px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Estilo "Glassmorphism" para Cards --- */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Seção HERO --- */
+#hero .hero-title {
+    font-size: clamp(2.5rem, 6vw, 3.0rem);
+}
+
+#hero .hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-top: 1rem;
+    max-width: 600px;
+}
+
+#hero .hero-photos {
+    margin-top: 2rem;
+    position: relative;
+    width: 650px;
+    height: 500px;
+}
+
+#hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 3px solid var(--card-border);
+}
+
+#foto1 {
+    opacity: 1;
+    z-index: 1;
+}
+
+#foto2 {
+    opacity: 0;
+    z-index: 2;
+}
+
+#photo-caption {
+    position: absolute;
+    top: 20%;
+    left: 72%;
+    transform: translate(-50%, -40%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    opacity: 0;
+    z-index: 3;
+}
+
+/* --- Seção HOBBIES --- */
+#hobbies h2 {
+    margin-bottom: 2rem;
+}
+
+#hobbies .carousel-container {
+    position: relative;
+    width: 750px; 
+    height: 460px;
+}
+
+#hobbies .carousel-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+#hobbies .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+#hobbies .overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+#hobbies .overlay-text a {
+    font-size: 1.2rem;
+}
+
+/* --- Seção PREFEITURA --- */
+#prefeitura .timeline-text {
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+#prefeitura .fluxo-container {
+    position: relative;
+    margin-top: 3rem;
+    cursor: default;
+    display: grid;
+    max-width: 800px;
+    width: 100%;
+}
+
+#prefeitura .fluxo-container img {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background-color: #ffffff;
+    max-width: 100%;
+    width: 800px;
+    height: auto;
+    border-radius: 8px;
+    transition: opacity 0.3s ease-in-out;
+    border: 3px solid var(--card-border);
+}
+
+#fluxo-img {
+    opacity: 1;
+    z-index: 2;
+}
+
+#processo-img {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#fluxo-popover {
+    position: absolute;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    text-align: left;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+#fluxo-popover {
+    left: 65%;
+    width: 50%;
+    margin-bottom: -10%;
+    background: var(--card-bg);
+    backdrop-filter: blur(40px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+#fluxo-popover p {
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.mobile-click-hint {
+    display: none; /* Escondido por padrão (no desktop) */
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    opacity: 0.8;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+.mobile-click-hint {
+    display: none; /* Escondido por padrão (no desktop) */
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    opacity: 0.8;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+/* --- Seção PANDEMIA --- */
+#pandemia .service-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 15px;
+}
+
+#pandemia .service-links a {
+    padding: 0.5rem 0.9rem;
+    border-radius: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+#pandemia .service-links a:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark-purple);
+    text-decoration: none;
+    transform: translateY(-3px);
+}
+
+/* --- Seção fluxao --- */
+#fluxao p {
+    margin-bottom: 1rem;
+}
+
+#fluxao-wrapper {
+    margin-top: 10px;
+    width: 70vw;
+    height: 70vh;
+    border: 2px solid var(--card-border);
+    border-radius: 30px;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#fluxao-img {
+    max-width: 100%;
+    display: block;
+}
+
+#fluxao .instruction {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+/* --- Seção EDUCAÇÃO --- */
+#educacao .education-text { 
+    margin-bottom: 2rem; 
+}
+#educacao .education-text p { 
+    margin-top: 1rem; 
+}
+#educacao .education-gallery { 
+    position: relative; 
+    width: 300px; 
+    height: 220px;
+}
+#educacao .education-gallery img { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    opacity: 0; 
+    border-radius: 20px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    border: 1px solid var(--card-border); 
+    background: rgba(0,0,0,0.1); 
+}
+#educacao .education-text2 {
+    margin-top: 2rem;
+}
+
+/* --- Seção ESTÁGIO --- */
+#estagio p {
+    margin-top: 1rem;
+}
+
+/* LÓGICA DO VÍDEO */
+#estagio .video {
+    width: 100%;
+    max-width: 850px;
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    overflow: hidden; 
+}
+#estagio-video {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.4s ease-out;
+}
+
+#estagio .video:hover #estagio-video {
+    transform: scale(1.1); 
+}
+
+#estagio .tech-flow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+#estagio .tech-icon,
+#estagio .tech-arrow {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* --- Seção BETTERFLIX --- */
+#betterflix p {
+    margin-top: 1rem;
+}
+
+/* --- Seção SKILLS --- */
+
+
+/* --- Seção CTA --- */
+#cta #present-button {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--bg-dark-purple);
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+}
+
+#cta #present-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* --- MODAL --- */
+#contact-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#contact-modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+}
+
+#close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#close-modal:hover {
+    opacity: 1;
+}
+
+.modal-content h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.modal-content p {
+    margin: 1rem 0 1.5rem 0;
+    font-size: 1.2rem;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.modal-buttons button,
+.modal-buttons a {
+    padding: 0.8rem 1rem;
+    background: var(--primary-color);
+    color: var(--bg-dark-purple);
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-buttons button:hover,
+.modal-buttons a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* --- Acessibilidade --- */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* --- Responsividade Mobile --- */
+@media (max-width: 768px) {
+
+    /* 1. Diminui o padding lateral em TODAS as seções */
+    .panel {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    p,
+    a {
+        font-size: 1rem;
+    }
+
+    /* 2. Ajusta a largura dos containers grandes */
+    #hero .hero-photos {
+        width: 90vw;  /* Usa 90% da largura da tela */
+        height: 70vw; /* Altura automática baseada na largura */
+        max-width: 400px; /* Limite */
+        max-height: 350px;
+    }
+
+    #hobbies .carousel-container {
+        width: 100%; /* Ocupa 100% da largura */
+        height: 300px;
+    }
+
+    #fluxo-popover {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-top: 1rem;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    #prefeitura .fluxo-container img:hover {
+        transform: none;
+    }
+}

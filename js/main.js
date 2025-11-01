@@ -48,11 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = gsap.utils.toArray('#hobbies .carousel-slide');
     const fadeTime = 0.5; 
     const stayTime = 1.8; 
-
-    // Define o estado inicial (primeiro slide visível, resto escondido)
-    gsap.set(slides[0], { opacity: 1, visibility: 'visible' });
-    gsap.set(slides.slice(1), { opacity: 0, visibility: 'hidden' });
-
     const slidesTL = gsap.timeline({
         scrollTrigger: {
             trigger: '.carousel-container',

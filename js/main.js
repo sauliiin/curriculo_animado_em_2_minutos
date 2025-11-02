@@ -47,10 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const slides = gsap.utils.toArray('#hobbies .carousel-slide');
     const fadeTime = 0.5; 
-    const stayTime = 1.8; 
-
-    // (As linhas 'gsap.set' problemáticas foram removidas)
-
+    const stayTime = 3.0; 
     const slidesTL = gsap.timeline({
         scrollTrigger: {
             trigger: '.carousel-container',
@@ -176,18 +173,23 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 80%'
         }
     });
-
-    const galleryTL = gsap.timeline({
+    gsap.to('#educacao .education-text2 p', {
+        opacity: 1, y: 0, stagger: 0.3, duration: 0.7,
         scrollTrigger: {
-            trigger: '.education-gallery',
+            trigger: '#educacao .education-text2 p',
             start: 'top 80%'
         },
+    });
+    
+    const sonicGif = document.querySelector('#educacao .sonic');
+    const gallery = document.querySelector('.education-gallery');
+    const galleryTL = gsap.timeline({
+        paused: true,
         repeat: -1 
     });
     
-    const gallery = document.querySelector('.education-gallery');
-    const imageCount = 10; 
-    const galleryFadeTime = 0.3; 
+    const imageCount = 14;
+    const galleryFadeTime = 0.5; 
     const galleryStayTime = 1.0; 
 
     let allImages = [];
@@ -210,27 +212,52 @@ document.addEventListener('DOMContentLoaded', () => {
             .to(img, { opacity: 0, duration: galleryFadeTime }, 'gallery-fade-' + i) 
             .to(nextImg, { opacity: 1, duration: galleryFadeTime }, 'gallery-fade-' + i); 
     });
+    const eduSequenceTL = gsap.timeline({
+        scrollTrigger: {
+            trigger: sonicGif,
+            start: 'top 80%'
+        },
+        delay: 1.0
+    });
 
+    eduSequenceTL
+        .to(sonicGif, { opacity: 1, duration: 0.5 }) // GIF aparece (fade in)
+        .to({}, { duration: 4.0 }) // GIF playng
+        .to(sonicGif, { opacity: 0, duration: 0.5, onComplete: () => {
+            gsap.set(sonicGif, { display: 'none' }); // Esconde o GIF 😎
+        }})
+        .set(gallery, { display: 'block' }) // Mostra a galeria
+        .to(gallery, { opacity: 1, duration: 0.5 }, "-=0.3") 
+        .call(() => {
+            galleryTL.play(); // COMEÇA o loop da galeria
+        });
+
+        
     // --- 7. ESTÁGIO 2025  ---
     gsap.to('#estagio h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#estagio h2', start: 'top 80%' } });
     gsap.to('#estagio p', { opacity: 1, y: 0, stagger: 0.3, duration: 0.7, scrollTrigger: { trigger: '#estagio p', start: 'top 80%' } });
     
-    // --- LÓGICA DO VÍDEO (HOVER) ---
     const estagioVideo = document.getElementById('estagio-video');
     if (estagioVideo) {
         const videoContainer = estagioVideo.parentElement;
-        if (videoContainer && videoContainer.classList.contains('video')) {
-            videoContainer.addEventListener('mouseenter', () => {
-                estagioVideo.play();
-            });
-            
-            videoContainer.addEventListener('mouseleave', () => {
-                estagioVideo.pause();
-                estagioVideo.currentTime = 0; // Reinicia o video
-            });
-
-            // Adiciona clique para mobile
-            videoContainer.addEventListener('click', () => { 
+        const hintText2 = document.querySelector('.mobile-click-hint2'); 
+        let hint2Clicked = false; 
+        if (videoContainer && videoContainer.classList.contains('video')) {            
+            if (!isMobile) { 
+                videoContainer.addEventListener('mouseenter', () => {
+                    estagioVideo.play();
+                });  
+                videoContainer.addEventListener('mouseleave', () => {
+                    estagioVideo.pause();
+                    estagioVideo.currentTime = 0; 
+                });
+            }
+            videoContainer.addEventListener('click', () => {            
+                // Lógica para esconder o hint de click
+                if (isMobile && hintText2 && !hint2Clicked) {
+                    gsap.to(hintText2, { opacity: 0, duration: 0.3, onComplete: () => hintText2.style.display = 'none' });
+                    hint2Clicked = true;
+                }               
                 if (estagioVideo.paused) {
                     estagioVideo.play();
                 } else {
@@ -239,6 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    gsap.to(['#docker-icon', '#api-icon', '#response-icon'], {
+        opacity: 1, scale: 1, stagger: 0.8,
+        repeat: -1, 
+        repeatDelay: 2, 
+        duration: 0.5,
+        scrollTrigger: {
+            trigger: '.tech-flow',
+            start: 'top 80%'
+        }
+    });
 
     gsap.to(['#docker-icon', '#api-icon', '#response-icon'], {
         opacity: 1, scale: 1, stagger: 0.8,

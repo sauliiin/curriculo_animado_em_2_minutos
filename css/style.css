@@ -1,7 +1,7 @@
 /* --- Reset Básico e Variáveis --- */
 :root {
     --bg-dark-purple: #1B0B2A;
-    --bg-light-purple: #2E2A88;
+    --bg-light-purple: #342f97;
     --text-color: #F0F0F0;
     --primary-color: #00E0FF;
     --card-bg: rgba(255, 255, 255, 0.05);
@@ -48,7 +48,7 @@ body {
 }
 
 .animate-bg {
-    animation: bgShift 10s ease infinite;
+    animation: bgShift 6s ease infinite;
 }
 
 /* --- Barra de Progresso --- */
@@ -183,7 +183,7 @@ a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 6%;
+    border-radius: 20px;
     position: absolute;
     top: 0;
     left: 0;
@@ -264,7 +264,7 @@ a:hover {
     margin-top: 3rem;
     cursor: default;
     display: grid;
-    max-width: 800px;
+    max-width: 750px;
     width: 100%;
 }
 
@@ -273,9 +273,9 @@ a:hover {
     grid-row: 1 / -1;
     background-color: #ffffff;
     max-width: 100%;
-    width: 800px;
+    width: 750px;
     height: auto;
-    border-radius: 8px;
+    border-radius: 20px;
     transition: opacity 0.3s ease-in-out;
     border: 3px solid var(--card-border);
 }
@@ -293,21 +293,17 @@ a:hover {
 
 #fluxo-popover {
     position: absolute;
-    bottom: 105%;
-    left: 50%;
+    bottom: 104%;
+    left: 70%;
     transform: translateX(-50%);
-    width: 320px;
+    width: 50%;
+    margin-bottom: -10%;
     text-align: left;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 10;
-}
 
-#fluxo-popover {
-    left: 65%;
-    width: 50%;
-    margin-bottom: -10%;
     background: var(--card-bg);
     backdrop-filter: blur(40px);
     border: 1px solid var(--card-border);
@@ -315,6 +311,7 @@ a:hover {
     padding: 1.5rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
+
 
 #fluxo-popover p {
     margin-bottom: 0.5rem;
@@ -353,7 +350,7 @@ a:hover {
 
 #pandemia .service-links a {
     padding: 0.5rem 0.9rem;
-    border-radius: 30px;
+    border-radius: 20px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     backdrop-filter: blur(10px);
@@ -374,10 +371,10 @@ a:hover {
 
 #fluxao-wrapper {
     margin-top: 10px;
-    width: 70vw;
-    height: 70vh;
+    width: 750px;
+    height: auto;
     border: 2px solid var(--card-border);
-    border-radius: 30px;
+    border-radius: 20px;
     overflow: hidden;
     touch-action: none;
     cursor: grab;
@@ -402,10 +399,28 @@ a:hover {
 #educacao .education-text p { 
     margin-top: 1rem; 
 }
+#educacao .sonic {
+    width: 400px; 
+    height: auto; 
+    margin: 2rem 0 0 0;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid var(--card-border); 
+    opacity: 0;
+}
+#educacao .sonic img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 20px; 
+}
 #educacao .education-gallery { 
     position: relative; 
-    width: 300px; 
-    height: 220px;
+    width: 400px; 
+    height: 290px;
+    display: none; /* JS vai ligar isso */
+    opacity: 0; /* JS vai animar isso */
+    margin-top: 0; /* Garante que ela apareça no lugar do GIF */
 }
 #educacao .education-gallery img { 
     position: absolute; 
@@ -433,7 +448,7 @@ a:hover {
     width: 100%;
     max-width: 850px;
     margin: 1.5rem 0;
-    border-radius: 10px;
+    border-radius: 20px;
     border: 1px solid var(--card-border);
     overflow: hidden; 
 }
@@ -619,7 +634,7 @@ a:hover {
     
     #fluxao-wrapper {
         width: 90vw; 
-        height: 50vh; /* Altura menor no mobile */
+        height: auto; /* Altura menor no mobile */
     }
     
     #educacao .education-gallery {

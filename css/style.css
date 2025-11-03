@@ -108,7 +108,7 @@ body {
 /* --- Lógica de Sobreposição Responsiva --- */
 /* Define o espaçamento inferior para todos os painéis, exceto o último */
 .panel:not(:last-child) {
-    padding-bottom: 5vh;
+    padding-bottom: 4vh;
 }
 
 /* Libera a altura e puxa para cima TODOS OS PAINÉIS, exceto o primeiro */
@@ -204,8 +204,8 @@ a:hover {
 #hero .hero-photos {
     margin-top: 2rem;
     position: relative;
-    width: 650px;
-    height: 500px;
+    width: 550px;
+    height: 400px;
 }
 
 #hero img {
@@ -231,8 +231,8 @@ a:hover {
 
 #photo-caption {
     position: absolute;
-    top: 20%;
-    left: 72%;
+    top: 25%;
+    left: 73%;
     transform: translate(-50%, -40%);
     background: rgba(0, 0, 0, 0.8);
     padding: 0.5rem 1rem;
@@ -248,8 +248,8 @@ a:hover {
 
 #hobbies .carousel-container {
     position: relative;
-    width: 750px; 
-    height: 460px;
+    width: 650px; 
+    height: 390px;
 }
 
 #hobbies .carousel-slide {
@@ -293,7 +293,7 @@ a:hover {
     margin-top: 3rem;
     cursor: default;
     display: grid;
-    max-width: 750px;
+    max-width: 650px;
     width: 100%;
 }
 
@@ -302,7 +302,7 @@ a:hover {
     grid-row: 1 / -1;
     background-color: #ffffff;
     max-width: 100%;
-    width: 750px;
+    width: 650px;
     height: auto;
     border-radius: 20px;
     transition: opacity 0.3s ease-in-out;
@@ -322,22 +322,24 @@ a:hover {
 
 #fluxo-popover {
     position: absolute;
-    bottom: 104%;
-    left: 70%;
+    bottom: 98%;
+    left: 75%;
     transform: translateX(-50%);
-    width: 50%;
-    margin-bottom: -10%;
+    width: 65%;
+    margin-bottom: -7%;
     text-align: left;
+    color: #fff;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8),
+                 0 2px 6px rgba(0, 0, 0, 0.7);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 10;
-
     background: var(--card-bg);
     backdrop-filter: blur(40px);
-    border: 1px solid var(--card-border);
+    border: 2px solid var(--card-border);
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 0.8rem;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -400,7 +402,7 @@ a:hover {
 
 #fluxao-wrapper {
     margin-top: 10px;
-    width: 750px;
+    width: 650px;
     height: auto;
     border: 2px solid var(--card-border);
     border-radius: 20px;
@@ -475,7 +477,7 @@ a:hover {
 /* LÓGICA DO VÍDEO */
 #estagio .video {
     width: 100%;
-    max-width: 850px;
+    max-width: 650px;
     margin: 1.5rem 0;
     border-radius: 20px;
     border: 1px solid var(--card-border);

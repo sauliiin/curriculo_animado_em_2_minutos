@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: '.carousel-container',
             start: 'top 80%' 
         },
-        delay: 1.0, 
+        delay: 0.6, 
         repeat: -1 
     });
     
@@ -217,12 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: sonicGif,
             start: 'top 80%'
         },
-        delay: 1.0
+        delay: 0.6
     });
 
     eduSequenceTL
         .to(sonicGif, { opacity: 1, duration: 0.5 }) // GIF aparece (fade in)
-        .to({}, { duration: 4.0 }) // GIF playng
+        .to({}, { duration: 3.0 }) // GIF playng
         .to(sonicGif, { opacity: 0, duration: 0.5, onComplete: () => {
             gsap.set(sonicGif, { display: 'none' }); // Esconde o GIF 😎
         }})

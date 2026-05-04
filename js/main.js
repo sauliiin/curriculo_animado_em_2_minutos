@@ -47,23 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const slides = gsap.utils.toArray('#hobbies .carousel-slide');
     const fadeTime = 0.5; 
-    const stayTime = 3.0; 
+    const stayTime = 6.3;
     const slidesTL = gsap.timeline({
         scrollTrigger: {
             trigger: '.carousel-container',
             start: 'top 80%' 
         },
         delay: 0.6, 
-        repeat: -1 
+        repeat: -1,
+        onUpdate: function() {
+            slides.forEach(slide => {
+                if (gsap.getProperty(slide, "opacity") > 0) {
+                    slide.classList.add('is-active');
+                } else {
+                    slide.classList.remove('is-active');
+                }
+            });
+        }
     });
-    
+
     // Diz à timeline para começar fazendo o fade in do primeiro slide
     slidesTL.to(slides[0], { opacity: 1, duration: fadeTime });
 
     // Constrói a timeline de loop
     slides.forEach((slide, i) => {
         const nextSlide = slides[(i + 1) % slides.length];
-        
+
         slidesTL
             .to(slide, { duration: stayTime }) 
             .to(slide, { opacity: 0, duration: fadeTime }, 'fade-' + i) 
@@ -102,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             isFluxoVisible = !isFluxoVisible; 
-            
+
             if (isFluxoVisible) {
                 // Mostra fluxo
                 gsap.to(fluxoImg, { opacity: 1, duration: 0.3 });
@@ -165,128 +174,124 @@ document.addEventListener('DOMContentLoaded', () => {
     fluxaoImg.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
 
     // --- 6. EDUCAÇÃO ---
-    gsap.to('#educacao .education-text h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#educacao .education-text h2', start: 'top 80%' } });
-    gsap.to('#educacao .education-text p', {
-        opacity: 1, y: 0, stagger: 0.3, duration: 0.7,
-        scrollTrigger: {
-            trigger: '#educacao .education-text p',
-            start: 'top 80%'
-        }
-    });
-    gsap.to('#educacao .education-text2 p', {
-        opacity: 1, y: 0, stagger: 0.3, duration: 0.7,
-        scrollTrigger: {
-            trigger: '#educacao .education-text2 p',
-            start: 'top 80%'
-        },
-    });
-    
-    const sonicGif = document.querySelector('#educacao .sonic');
-    const gallery = document.querySelector('.education-gallery');
-    const galleryTL = gsap.timeline({
-        paused: true,
-        repeat: -1 
-    });
-    
-    const imageCount = 14;
-    const galleryFadeTime = 0.5; 
-    const galleryStayTime = 1.0; 
-
-    let allImages = [];
-    for (let i = 0; i < imageCount; i++) {
-        const letter = String.fromCharCode(97 + i); 
-        const img = document.createElement('img');
-        img.src = `assets/${letter}.png`;
-        img.alt = `Imagem da faculdade / certificados ${i + 1}`;
-        gallery.appendChild(img);
-        allImages.push(img); 
-    }
-
-    galleryTL.to(allImages[0], { opacity: 1, duration: galleryFadeTime });
-
-    allImages.forEach((img, i) => {
-        const nextImg = allImages[(i + 1) % allImages.length]; 
-        
-        galleryTL
-            .to(img, { duration: galleryStayTime }) 
-            .to(img, { opacity: 0, duration: galleryFadeTime }, 'gallery-fade-' + i) 
-            .to(nextImg, { opacity: 1, duration: galleryFadeTime }, 'gallery-fade-' + i); 
-    });
-    const eduSequenceTL = gsap.timeline({
-        scrollTrigger: {
-            trigger: sonicGif,
-            start: 'top 80%'
-        },
-        delay: 0.6
-    });
-
-    eduSequenceTL
-        .to(sonicGif, { opacity: 1, duration: 0.5 }) // GIF aparece (fade in)
-        .to({}, { duration: 3.0 }) // GIF playng
-        .to(sonicGif, { opacity: 0, duration: 0.5, onComplete: () => {
-            gsap.set(sonicGif, { display: 'none' }); // Esconde o GIF 😎
-        }})
-        .set(gallery, { display: 'block' }) // Mostra a galeria
-        .to(gallery, { opacity: 1, duration: 0.5 }, "-=0.3") 
-        .call(() => {
-            galleryTL.play(); // COMEÇA o loop da galeria
+    const educacaoSection = document.getElementById('educacao');
+    if (educacaoSection) {
+        gsap.to('#educacao .education-text h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#educacao .education-text h2', start: 'top 80%' } });
+        gsap.to('#educacao .education-text p', {
+            opacity: 1, y: 0, stagger: 0.3, duration: 0.7,
+            scrollTrigger: {
+                trigger: '#educacao .education-text p',
+                start: 'top 80%'
+            }
+        });
+        gsap.to('#educacao .education-text2 p', {
+            opacity: 1, y: 0, stagger: 0.3, duration: 0.7,
+            scrollTrigger: {
+                trigger: '#educacao .education-text2 p',
+                start: 'top 80%'
+            },
         });
 
-        
-    // --- 7. ESTÁGIO 2025  ---
-    gsap.to('#estagio h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#estagio h2', start: 'top 80%' } });
-    gsap.to('#estagio p', { opacity: 1, y: 0, stagger: 0.3, duration: 0.7, scrollTrigger: { trigger: '#estagio p', start: 'top 80%' } });
-    
-    const estagioVideo = document.getElementById('estagio-video');
-    if (estagioVideo) {
-        const videoContainer = estagioVideo.parentElement;
-        const hintText2 = document.querySelector('.mobile-click-hint2'); 
-        let hint2Clicked = false; 
-        if (videoContainer && videoContainer.classList.contains('video')) {            
-            if (!isMobile) { 
-                videoContainer.addEventListener('mouseenter', () => {
-                    estagioVideo.play();
-                });  
-                videoContainer.addEventListener('mouseleave', () => {
-                    estagioVideo.pause();
-                    estagioVideo.currentTime = 0; 
-                });
-            }
-            videoContainer.addEventListener('click', () => {            
-                // Lógica para esconder o hint de click
-                if (isMobile && hintText2 && !hint2Clicked) {
-                    gsap.to(hintText2, { opacity: 0, duration: 0.3, onComplete: () => hintText2.style.display = 'none' });
-                    hint2Clicked = true;
-                }               
-                if (estagioVideo.paused) {
-                    estagioVideo.play();
-                } else {
-                    estagioVideo.pause();
-                }
+        const sonicGif = document.querySelector('#educacao .sonic');
+        const gallery = document.querySelector('.education-gallery');
+        if (sonicGif && gallery) {
+            const galleryTL = gsap.timeline({
+                paused: true,
+                repeat: -1
             });
+
+            const imageCount = 14;
+            const galleryFadeTime = 0.5;
+            const galleryStayTime = 1.0;
+
+            let allImages = [];
+            for (let i = 0; i < imageCount; i++) {
+                const letter = String.fromCharCode(97 + i);
+                const img = document.createElement('img');
+                img.src = `assets/${letter}.png`;
+                img.alt = `Imagem da faculdade / certificados ${i + 1}`;
+                gallery.appendChild(img);
+                allImages.push(img);
+            }
+
+            galleryTL.to(allImages[0], { opacity: 1, duration: galleryFadeTime });
+
+            allImages.forEach((img, i) => {
+                const nextImg = allImages[(i + 1) % allImages.length];
+
+                galleryTL
+                    .to(img, { duration: galleryStayTime })
+                    .to(img, { opacity: 0, duration: galleryFadeTime }, 'gallery-fade-' + i)
+                    .to(nextImg, { opacity: 1, duration: galleryFadeTime }, 'gallery-fade-' + i);
+            });
+            const eduSequenceTL = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sonicGif,
+                    start: 'top 80%'
+                },
+                delay: 0.6
+            });
+
+            eduSequenceTL
+                .to(sonicGif, { opacity: 1, duration: 0.5 }) // GIF aparece (fade in)
+                .to({}, { duration: 3.0 }) // GIF playng
+                .to(sonicGif, { opacity: 0, duration: 0.5, onComplete: () => {
+                    gsap.set(sonicGif, { display: 'none' }); // Esconde o GIF 😎
+                }})
+                .set(gallery, { display: 'block' }) // Mostra a galeria
+                .to(gallery, { opacity: 1, duration: 0.5 }, "-=0.3")
+                .call(() => {
+                    galleryTL.play(); // COMEÇA o loop da galeria
+                });
         }
     }
-    gsap.to(['#docker-icon', '#api-icon', '#response-icon'], {
-        opacity: 1, scale: 1, stagger: 0.8,
-        repeat: -1, 
-        repeatDelay: 2, 
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.tech-flow',
-            start: 'top 80%'
-        }
-    });
 
-    gsap.to(['#docker-icon', '#api-icon', '#response-icon'], {
-        opacity: 1, scale: 1, stagger: 0.8,
-        repeat: -1, 
-        repeatDelay: 2, 
-        duration: 0.5,
-        scrollTrigger: {
-            trigger: '.tech-flow',
-            start: 'top 80%'
+    // --- 7. ESTÁGIO 2025  ---
+    const estagioSection = document.getElementById('estagio');
+    if (estagioSection) {
+        gsap.to('#estagio h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#estagio h2', start: 'top 80%' } });
+        gsap.to('#estagio p', { opacity: 1, y: 0, stagger: 0.3, duration: 0.7, scrollTrigger: { trigger: '#estagio p', start: 'top 80%' } });
+
+        const estagioVideo = document.getElementById('estagio-video');
+        if (estagioVideo) {
+            const videoContainer = estagioVideo.parentElement;
+            const hintText2 = document.querySelector('.mobile-click-hint2');
+            let hint2Clicked = false;
+            if (videoContainer && videoContainer.classList.contains('video')) {
+                if (!isMobile) {
+                    videoContainer.addEventListener('mouseenter', () => {
+                        estagioVideo.play();
+                    });
+                    videoContainer.addEventListener('mouseleave', () => {
+                        estagioVideo.pause();
+                        estagioVideo.currentTime = 0;
+                    });
+                }
+                videoContainer.addEventListener('click', () => {
+                    // Lógica para esconder o hint de click
+                    if (isMobile && hintText2 && !hint2Clicked) {
+                        gsap.to(hintText2, { opacity: 0, duration: 0.3, onComplete: () => hintText2.style.display = 'none' });
+                        hint2Clicked = true;
+                    }
+                    if (estagioVideo.paused) {
+                        estagioVideo.play();
+                    } else {
+                        estagioVideo.pause();
+                    }
+                });
+            }
         }
-    });
+        gsap.to(['#docker-icon', '#api-icon', '#response-icon'], {
+            opacity: 1, scale: 1, stagger: 0.8,
+            repeat: -1,
+            repeatDelay: 2,
+            duration: 0.5,
+            scrollTrigger: {
+                trigger: '.tech-flow',
+                start: 'top 80%'
+            }
+        });
+    }
 
     // --- 8. BETTERFLIX  ---
     gsap.to('#betterflix h2', { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: '#betterflix h2', start: 'top 80%' } });

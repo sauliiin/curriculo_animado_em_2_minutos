@@ -248,33 +248,54 @@ a:hover {
 
 #hobbies .carousel-container {
     position: relative;
-    width: 650px; 
-    height: 390px;
+    width: 760px;
+    height: 470px;
 }
 
 #hobbies .carousel-slide {
     position: absolute;
     inset: 0;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 0 1rem 1rem;
+    pointer-events: none; /* Desabilita eventos de mouse por padrão */
+}
+
+#hobbies .carousel-slide.is-active {
+    pointer-events: auto; /* Habilita eventos de mouse para o slide ativo */
 }
 
 #hobbies .carousel-slide img {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: calc(100% - 4.5rem);
+    object-fit: contain;
     border-radius: 20px;
+    transition: transform 0.3s ease-out;
+}
+
+#hobbies .carousel-slide img:hover {
+    transform: scale(1.4);
 }
 
 #hobbies .overlay-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-    border-radius: 20px;
-    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+    margin-top: 0.9rem;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    font-size: 1.05rem;
     font-weight: 400;
+    text-align: center;
+    pointer-events: none;
+    color: #F0FF00;
+    text-shadow: 0 0 3px #F0FF00, 0 0 5px #F0FF00, 0 0 10px #F0FF00;
 }
 
 #hobbies .overlay-text a {
@@ -652,7 +673,7 @@ a:hover {
 
     #hobbies .carousel-container {
         width: 100%;
-        height: 300px;
+        height: 360px;
     }
     
     #prefeitura .fluxo-container {

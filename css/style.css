@@ -275,7 +275,7 @@ a:hover {
     width: 100%;
     height: calc(100% - 4.5rem);
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 15px; /* Aumentando o arredondamento */
     transition: transform 0.3s ease-out;
 }
 
@@ -291,11 +291,17 @@ a:hover {
     background: transparent;
     border-radius: 0;
     font-size: 1.05rem;
-    font-weight: 400;
+    font-weight: 700; /* Em negrito */
     text-align: center;
     pointer-events: none;
-    color: #F0FF00;
-    text-shadow: 0 0 3px #F0FF00, 0 0 5px #F0FF00, 0 0 10px #F0FF00;
+    color: #DCE500; /* Tom de amarelo menos saturado */
+    text-shadow: 0 0 8px rgba(220, 229, 0, 0.7); /* Sombra mais suave */
+}
+
+.custom-title-color {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+    margin-bottom: 1.5rem; /* Adiciona um espaço abaixo do título */
 }
 
 #hobbies .overlay-text a {

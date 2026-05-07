@@ -32,7 +32,7 @@
     <main>
         <section id="hero" class="panel">
             <h1 class="hero-title">Meu currículo animado em 2 minutos</h1>
-            <h2 class="hero-subtitle">Sou Saulo Hugo Rossi, formado em Direito (UFMG), Análise em Desenvolvimento de Sistemas e Ciências da Computação (Newton Paiva).</h2>
+            <h2 class="hero-subtitle" data-after-transition="Saulo Hugo Rossi: Desenvolvedor Backend Python | Desenvolvedor Web Full-Stack | Analista de Sistemas">Sou Saulo Hugo Rossi, formado em Direito (UFMG), Análise em Desenvolvimento de Sistemas e Ciências da Computação (Newton Paiva).</h2>
             <div class="hero-photos">
                 <img src="assets/foto1.png" alt="Foto divertida (não é o Saulo)" id="foto1">
                 <p id="photo-caption">Ops! Mentira, sou este! Informal e sempre animado!</p>
@@ -50,6 +50,10 @@
                 <div class="carousel-slide">
                     <img src="assets/img5a.png" alt="Sites">
                     <div class="overlay-text">Análise de dados dos Julgamentos</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="assets/img11.png" alt="Sites">
+                    <div class="overlay-text">Implementei a legislação e os sistemas para que os julgamentos presenciais fossem realizados de forma remota</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img6.png" alt="Sites">
@@ -88,9 +92,9 @@
 
         <section id="prefeitura" class="panel">
             <div class="timeline-content">
-                <h2 class="custom-title-color">Now, lets talk about big stuff 😎</h2>
+                <h2 class="custom-title-color">Now, lets talk about big projects 😎</h2>
                 <p class="timeline-text">Em 2019, conduzi e participei ativamente do desenvolvimento de um sistema para a Prefeitura de Belo Horizonte, viabilizando a digitalização de processos até então tramitados em papel.</p>
-                <p class="timeline-text">Foi então que percebi 🤔💡... <strong> com minha sólida experiência jurídica, adquiri uma visão analítica de processos e a habilidade para desenvolver soluções de TI eficientes 🦸🏻‍♂️</strong>, passando a atuar também como analista de sistemas.</p>
+                <p class="timeline-text">Foi então que percebi<img class="inline-dots" src="assets/dots.gif" alt="dots">🤔💡<strong class="typewriter-text"> com minha sólida experiência jurídica, adquiri uma visão analítica de processos e a habilidade para desenvolver soluções de TI eficientes 🦸🏻‍♂️</strong>, passando a atuar também como analista de sistemas.</p>
                 <p class="timeline-text">Simplificando: este é o fluxo do sistema onde julgamos mais de <strong>20.000</strong> processos.</p>
             </div>
             <div class="fluxo-container">
@@ -144,11 +148,20 @@
 
         <section id="skills" class="panel">
             <h2>Skills</h2>
-            <p><strong>Linguagens: </strong>Python, JavaScript (ES6+), TypeScript, HTML, CSS, SQL</p>
-            <p><strong>Frameworks/Bibliotecas: </strong>FastAPI, Flask, React, Node.js, Express</p>
-            <p><strong>Banco de Dados: </strong>MySQL, SQLite, Firestone (Firebase)</p>
-            <p><strong>Ferramentas: </strong>Git, GitHub, Docker, Docker Compose, Grafana</p>
-            <p><strong>Outros: </strong>REST APIs, GraphQL, pytest (testes), Pandas, NLP (coleta e análise de tweets), CI/CD (GitHub Actions), observability</p>
+            <p><strong>Linguagens: </strong>Python, JavaScript, TypeScript, SQL, HTML5, CSS3</p>
+            <p><strong>Backend: </strong>Flask, FastAPI, Node.js, Express, APIs REST, GraphQL</p>
+            <p><strong>Frontend: </strong>React, HTML5, CSS3, interfaces responsivas</p>
+            <p><strong>Bancos de Dados: </strong>MySQL, SQLite, Firebase/Firestore</p>
+            <p><strong>DevOps e Ferramentas: </strong>Docker, Docker Compose, Git, GitHub, GitHub Actions, Grafana</p>
+            <p><strong>Testes e Qualidade: </strong>pytest, TDD, versionamento de código</p>
+            <p><strong>Metodologias: </strong>Scrum, Kanban</p>
+        </section>
+        <section id="experiences" class="panel">
+            <h2>Experiências Profissionais</h2>
+            <p><strong>A5 Labs: </strong>Desenvolvedor Backend Python | 2025–atual</p>
+            <p><strong>Autônomo, Projetos Acadêmicos e Pessoais: </strong>Desenvolvedor Web Full-Stack | 2022–atual</p>
+            <p><strong>Prefeitura de Belo Horizonte: </strong>Analista de Sistemas | Gerente Executivo | 2018–atual</p>
+            <p><strong>GAMAA Advocacia Empresarial: </strong>Advogado Sênior | 2010-2016</p>
         </section>
         
         <section id="cta" class="panel">
@@ -165,7 +178,7 @@
             <h3>Dev full-stack</h3>
             <p><strong>Telefone:</strong> <span id="phone-number">(31)99201-4352</span></p>
             <div class="modal-buttons">
-                <button id="copy-phone">Copiar Telefone</button>
+                <button id="copy-phone" data-default-text="Copiar Telefone" data-copied-text="Copiado!">Copiar Telefone</button>
                 <a href="https://www.linkedin.com/in/saulo-hugo-rossi-658760165/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/sauliiin?tab=repositories" target="_blank" rel="noopener noreferrer">Github</a>
                 <a href="assets/Saulo_Rossi_FullStack_Developer.pdf" download>Download CV (PDF)</a>

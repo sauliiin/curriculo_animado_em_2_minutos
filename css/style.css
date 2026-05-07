@@ -201,6 +201,11 @@ a:hover {
     max-width: 600px;
 }
 
+#hero .hero-subtitle.is-highlighted {
+    color: #DCE500;
+    text-shadow: 0 0 8px rgba(220, 229, 0, 0.7);
+}
+
 #hero .hero-photos {
     margin-top: 2rem;
     position: relative;
@@ -280,7 +285,7 @@ a:hover {
 }
 
 #hobbies .carousel-slide img:hover {
-    transform: scale(1.4);
+    transform: scale(1.45);
 }
 
 #hobbies .overlay-text {
@@ -313,6 +318,30 @@ a:hover {
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
+}
+
+#prefeitura .inline-dots {
+    display: inline-block;
+    width: auto;
+    height: 1em;
+    margin-left: 0.35rem;
+    margin-right: 0.15rem;
+    vertical-align: -0.35em;
+    transform: scale(3.5);
+    transform-origin: center;
+}
+
+#prefeitura .typewriter-text.is-typing::after {
+    content: "|";
+    display: inline-block;
+    margin-left: 0.08em;
+    animation: caretBlink 0.8s steps(1) infinite;
+}
+
+@keyframes caretBlink {
+    50% {
+        opacity: 0;
+    }
 }
 
 #prefeitura .fluxo-container {
@@ -397,6 +426,10 @@ a:hover {
 }
 
 /* --- Seção PANDEMIA --- */
+#pandemia h2 {
+    max-width: 760px;
+}
+
 #pandemia .service-links {
     display: flex;
     flex-wrap: wrap;

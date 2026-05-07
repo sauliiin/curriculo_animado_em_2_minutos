@@ -16,9 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. HERO (ANIMAÇÃO DE INTRODUÇÃO AUTOMÁTICA) ---
     const heroIntroTimeline = gsap.timeline(); 
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroSubtitleAfterTransition = heroSubtitle.dataset.afterTransition || 'Saulo Hugo Rossi: Desenvolvedor Backend Python | Desenvolvedor Web Full-Stack | Analista de Sistemas';
     
     heroIntroTimeline
-        .to({}, { duration: 2.7 }) 
+        .to({}, { duration: 4 }) 
+        .to(heroSubtitle, { 
+            opacity: 0, 
+            duration: 0.35, 
+            ease: 'power2.inOut',
+            onComplete: () => {
+                heroSubtitle.textContent = heroSubtitleAfterTransition;
+                heroSubtitle.classList.add('is-highlighted');
+            }
+        }, "transition-start")
+        .to(heroSubtitle, { 
+            opacity: 1, 
+            duration: 0.35, 
+            ease: 'power2.inOut' 
+        }, "transition-start+=0.35")
         .to('#foto1', { 
             opacity: 0, 
             duration: 0.7, 
@@ -88,6 +104,39 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 80%'
         }
     });
+
+    const typewriterText = document.querySelector('#prefeitura .typewriter-text');
+    if (typewriterText) {
+        const fullText = typewriterText.textContent;
+        const graphemes = typeof Intl !== 'undefined' && Intl.Segmenter
+            ? Array.from(new Intl.Segmenter('pt-BR', { granularity: 'grapheme' }).segment(fullText), item => item.segment)
+            : Array.from(fullText);
+
+        typewriterText.textContent = '';
+
+        ScrollTrigger.create({
+            trigger: typewriterText,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                let index = 0;
+                typewriterText.classList.add('is-typing');
+
+                const typeNextCharacter = () => {
+                    typewriterText.textContent = graphemes.slice(0, index).join('');
+                    index += 1;
+
+                    if (index <= graphemes.length) {
+                        setTimeout(typeNextCharacter, 68);
+                    } else {
+                        typewriterText.classList.remove('is-typing');
+                    }
+                };
+
+                setTimeout(typeNextCharacter, 700);
+            }
+        });
+    }
 
     // --- LÓGICA DO FLUXO (Condicional) ---
     const fluxoContainer = document.querySelector('#prefeitura .fluxo-container');
@@ -342,9 +391,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     copyPhoneButton.addEventListener('click', () => {
         const phoneNumber = document.getElementById('phone-number').innerText;
+        const defaultCopyText = copyPhoneButton.dataset.defaultText || 'Copiar Telefone';
+        const copiedText = copyPhoneButton.dataset.copiedText || 'Copiado!';
+
         navigator.clipboard.writeText(phoneNumber).then(() => {
-            copyPhoneButton.innerText = 'Copiado!';
-            setTimeout(() => { copyPhoneButton.innerText = 'Copiar Telefone'; }, 2000);
+            copyPhoneButton.innerText = copiedText;
+            setTimeout(() => { copyPhoneButton.innerText = defaultCopyText; }, 2000);
         });
     });
 });

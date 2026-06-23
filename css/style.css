@@ -83,9 +83,43 @@ body {
     backdrop-filter: blur(10px);
     border-radius: 60px; /* Formato de pílula */
     transition: all 0.3s ease;
+    min-width: 130px;
+    text-align: center;
 }
 
 .lang-switcher a:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark-purple);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+/* --- Seletor de Tema (Theme Switcher) --- */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    left: 25px;
+    z-index: 990;
+}
+
+.theme-switcher a {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-decoration: none;
+    background: rgba(0, 224, 255, 0.2);
+    border: 2px solid rgba(0, 224, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 60px; /* Formato de pílula */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-width: 130px;
+    text-align: center;
+}
+
+.theme-switcher a:hover {
     background: var(--primary-color);
     color: var(--bg-dark-purple);
     transform: scale(1.05);
@@ -754,4 +788,121 @@ a:hover {
     #prefeitura .fluxo-container img:hover {
         transform: none;
     }
+}
+
+/* --- Tema Cyberpunk --- */
+body.cyberpunk-theme {
+    --bg-dark-purple: #0b0b0b;
+    --bg-light-purple: #1a1a1a;
+    --text-color: #00f0ff;
+    --primary-color: #FCEE0A;
+    --card-bg: rgba(11, 11, 11, 0.8);
+    --card-border: #FCEE0A;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body.cyberpunk-theme h1,
+body.cyberpunk-theme h2,
+body.cyberpunk-theme h3,
+body.cyberpunk-theme .hero-title,
+body.cyberpunk-theme .custom-title-color,
+body.cyberpunk-theme .lang-switcher a,
+body.cyberpunk-theme .theme-switcher a {
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+}
+
+body.cyberpunk-theme p strong,
+body.cyberpunk-theme h1,
+body.cyberpunk-theme h2,
+body.cyberpunk-theme h3 {
+    color: #FCEE0A;
+    text-shadow: 0 0 5px #FCEE0A, 0 0 10px #FCEE0A;
+}
+
+body.cyberpunk-theme p strong {
+    color: #FF003C;
+    text-shadow: 0 0 5px #FF003C, 0 0 10px #FF003C;
+}
+
+body.cyberpunk-theme .glass-card {
+    box-shadow: 0 0 15px #FCEE0A, inset 0 0 10px #FCEE0A;
+    border: 1px solid #FCEE0A;
+}
+
+body.cyberpunk-theme .lang-switcher a,
+body.cyberpunk-theme .theme-switcher a {
+    background: rgba(252, 238, 10, 0.2);
+    border: 2px solid #FCEE0A;
+    color: #FCEE0A;
+    text-shadow: 0 0 5px #FCEE0A;
+    box-shadow: 0 0 10px #FCEE0A;
+    border-radius: 0;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+body.cyberpunk-theme .lang-switcher a:hover,
+body.cyberpunk-theme .theme-switcher a:hover {
+    background: #FCEE0A;
+    color: #0b0b0b;
+    box-shadow: 0 0 20px #FCEE0A, 0 0 30px #FCEE0A;
+    text-shadow: none;
+}
+
+body.cyberpunk-theme #progress-bar {
+    background-color: #00f0ff;
+    box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+}
+
+body.cyberpunk-theme #hero .hero-subtitle.is-highlighted {
+    color: #00f0ff;
+    text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+}
+
+body.cyberpunk-theme .overlay-text {
+    color: #FCEE0A;
+    text-shadow: 0 0 10px #FCEE0A, 0 0 20px #FCEE0A, 0 0 30px #FF003C;
+}
+
+body.cyberpunk-theme #cta #present-button {
+    background-color: #FCEE0A;
+    color: #0b0b0b;
+    box-shadow: 0 0 15px #FCEE0A;
+    text-shadow: none;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    border-radius: 0;
+    clip-path: polygon(5% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 20%);
+}
+
+body.cyberpunk-theme #cta #present-button:hover {
+    box-shadow: 0 0 25px #FCEE0A, 0 0 40px #FF003C;
+    background-color: #FF003C;
+    color: #FCEE0A;
+}
+
+body.cyberpunk-theme .modal-content {
+    border: 2px solid #FCEE0A;
+    box-shadow: 0 0 20px #FCEE0A, inset 0 0 20px #FF003C;
+    border-radius: 0;
+}
+
+body.cyberpunk-theme .modal-buttons button,
+body.cyberpunk-theme .modal-buttons a {
+    background: transparent;
+    border: 2px solid #FCEE0A;
+    color: #FCEE0A;
+    box-shadow: 0 0 10px #FCEE0A;
+    text-shadow: 0 0 5px #FCEE0A;
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 0;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+body.cyberpunk-theme .modal-buttons button:hover,
+body.cyberpunk-theme .modal-buttons a:hover {
+    background: #FCEE0A;
+    color: #0b0b0b;
+    box-shadow: 0 0 20px #FCEE0A, 0 0 30px #FF003C;
+    text-shadow: none;
 }

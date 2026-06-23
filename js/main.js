@@ -2,6 +2,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // --- LÓGICA DO TEMA CYBERPUNK ---
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.body.classList.toggle('cyberpunk-theme');
+            const isCyberpunk = document.body.classList.contains('cyberpunk-theme');
+            localStorage.setItem('theme', isCyberpunk ? 'cyberpunk' : 'standard');
+            themeToggle.textContent = isCyberpunk ? 'Cyberpunk' : 'Standard';
+        });
+
+        // Carrega o tema salvo
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'cyberpunk') {
+            document.body.classList.add('cyberpunk-theme');
+            themeToggle.textContent = 'Cyberpunk';
+        } else {
+            themeToggle.textContent = 'Standard';
+        }
+    }
+
     // --- BARRA DE PROGRESSO (Controlada pelo Scroll) ---
     gsap.to('#progress-bar', {
         width: '100%',

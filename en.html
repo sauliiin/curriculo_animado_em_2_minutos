@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saulo Hugo Rossi - Animated Resume</title>
-    
-    <meta name="description" content="My 2-minute animated resume. Follow Saulo Hugo Rossi's journey from law to technology.">
+
+    <meta name="description"
+        content="My 2-minute animated resume. Follow Saulo Hugo Rossi's journey from law to technology.">
     <meta property="og:title" content="Saulo Hugo Rossi - Animated Resume">
     <meta property="og:description" content="An interactive presentation of my career and projects.">
     <meta property="og:image" content="assets/foto2.png">
@@ -15,16 +17,20 @@
     <link rel="preload" href="assets/foto2.png" as="image">
     <link rel="preload" href="assets/fluxo.png" as="image">
     <link rel="preload" href="assets/fluxao.png" as="image">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body class="animate-bg">
 
     <div id="progress-bar"></div>
+    <div class="theme-switcher">
+        <a href="#" id="theme-toggle">Standard</a>
+    </div>
     <div class="lang-switcher">
         <a href="index.html">PT 🇧🇷</a>
     </div>
@@ -32,7 +38,10 @@
     <main>
         <section id="hero" class="panel">
             <h1 class="hero-title">My 2-minute animated resume</h1>
-            <h2 class="hero-subtitle" data-after-transition="Saulo Hugo Rossi: Python Backend Developer | Full-Stack Web Developer | Systems Analyst">I am Saulo Hugo Rossi, with degrees in Law (UFMG), Systems Analysis and Development, and Computer Science (Newton Paiva).</h2>
+            <h2 class="hero-subtitle"
+                data-after-transition="Saulo Hugo Rossi: Python Backend Developer | Full-Stack Web Developer | Systems Analyst">
+                I am Saulo Hugo Rossi, with degrees in Law (UFMG), Systems Analysis and Development, and Computer
+                Science (Newton Paiva).</h2>
             <div class="hero-photos">
                 <img src="assets/foto1.png" alt="Fun photo (not Saulo)" id="foto1">
                 <p id="photo-caption">Oops! Not really, this is me! Informal and always upbeat!</p>
@@ -45,7 +54,8 @@
             <div class="carousel-container">
                 <div class="carousel-slide">
                     <img src="assets/img5.png" alt="Websites">
-                    <div class="overlay-text">Python + frontend: extracting information from thousands of PDFs and turning that raw data into an interactive dashboard.</div>
+                    <div class="overlay-text">Python + frontend: extracting information from thousands of PDFs and
+                        turning that raw data into an interactive dashboard.</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img5a.png" alt="Websites">
@@ -53,15 +63,18 @@
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img11.png" alt="Websites">
-                    <div class="overlay-text">I implemented the legislation and systems so in-person judgments could be carried out remotely.</div>
+                    <div class="overlay-text">I implemented the legislation and systems so in-person judgments could be
+                        carried out remotely.</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img6.png" alt="Websites">
-                    <div class="overlay-text">Application for managing team vacations, hybrid work schedules and substitute assignments (CSS + JS + HTML + Firebase integrated).</div>
+                    <div class="overlay-text">Application for managing team vacations, hybrid work schedules and
+                        substitute assignments (CSS + JS + HTML + Firebase integrated).</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img7.png" alt="Websites">
-                    <div class="overlay-text">An .exe app for sending files via SSH from Windows to the Steam Deck (mostly in Python)</div>
+                    <div class="overlay-text">An .exe app for sending files via SSH from Windows to the Steam Deck
+                        (mostly in Python)</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img8.png" alt="Websites">
@@ -69,7 +82,8 @@
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img4.png" alt="BetterFlix">
-                    <div class="overlay-text">API integration (mdblist, TMDb, OMDb, IMDb and YouTube) to create a single complete streaming app (Python + XML)</div>
+                    <div class="overlay-text">API integration (mdblist, TMDb, OMDb, IMDb and YouTube) to create a single
+                        complete streaming app (Python + XML)</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img10.png" alt="BetterFlix">
@@ -77,11 +91,13 @@
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img4a.jpg" alt="BetterFlix">
-                    <div class="overlay-text">A plugin to manage ReShade (image enhancer) on Steam Deck and similar portable Linux devices (Python + shell).</div>
+                    <div class="overlay-text">A plugin to manage ReShade (image enhancer) on Steam Deck and similar
+                        portable Linux devices (Python + shell).</div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img2.png" alt="Electric Scooter Firmware">
-                    <div class="overlay-text">Firmware for an electric scooter, mostly in C and flashed via ST-Link</div>
+                    <div class="overlay-text">Firmware for an electric scooter, mostly in C and flashed via ST-Link
+                    </div>
                 </div>
                 <div class="carousel-slide">
                     <img src="assets/img3.png" alt="Electric Scooter Firmware">
@@ -93,9 +109,16 @@
         <section id="prefeitura" class="panel">
             <div class="timeline-content">
                 <h2 class="custom-title-color">Now, let's talk about big projects 😎</h2>
-                <p class="timeline-text">In 2019, I led and actively participated in the development of a system for the City Hall of Belo Horizonte, enabling the digitization of processes that had previously been handled on paper.</p>
-                <p class="timeline-text">That's when I realized<img class="inline-dots" src="assets/dots.gif" alt="dots">🤔💡<strong class="typewriter-text"> with my solid legal background, I gained an analytical view of processes and the ability to develop efficient IT solutions 🦸🏻‍♂️</strong>, and also started working as a systems analyst.</p>
-                <p class="timeline-text">Simply put: this is the system flow where we judged more than <strong>20,000</strong> cases.</p>
+                <p class="timeline-text">In 2019, I led and actively participated in the development of a system for the
+                    City Hall of Belo Horizonte, enabling the digitization of processes that had previously been handled
+                    on paper.</p>
+                <p class="timeline-text">That's when I realized<img class="inline-dots" src="assets/dots.gif"
+                        alt="dots">🤔💡<strong class="typewriter-text"> with my solid legal background, I gained an
+                        analytical view of processes and the ability to develop efficient IT solutions 🦸🏻‍♂️</strong>,
+                    and also started working as a systems analyst.</p>
+                <p class="timeline-text">Simply put: this is the system flow where we judged more than
+                    <strong>20,000</strong> cases.
+                </p>
             </div>
             <div class="fluxo-container">
                 <img src="assets/fluxo.png" alt="Process flow - compact version" id="fluxo-img" tabindex="0">
@@ -112,31 +135,40 @@
                 </div>
             </div>
         </section>
-        
+
         <section id="pandemia" class="panel">
-            <h2>In 2022, I led a larger team in creating and implementing a more robust workflow, responsible for integrating the following services into the SYDLE ONE platform:</h2>
+            <h2>In 2022, I led a larger team in creating and implementing a more robust workflow, responsible for
+                integrating the following services into the SYDLE ONE platform:</h2>
             <div class="service-links">
-                <a href="https://servicos.pbh.gov.br/i/5e5ecdfae1bf5e706b1c9d82/servicos+defesa-contra-autos-emitidos-pela-fiscalizacao" target="_blank" rel="noopener noreferrer">Defense (1st Instance)</a>
-                <a href="https://servicos.pbh.gov.br/i/5eb40fabcf23934c43693261/servicos+recurso-contra-decisao-das-juntas-integradas-de-julgamento-fiscal-2-instancia" target="_blank" rel="noopener noreferrer">Appeal (2nd Instance)</a>
-                <a href="https://servicos.pbh.gov.br/servicos/i/620571b74164c62f6499f715/5dc8470253fd6b5bbd99185f/servicos+desistencia-de-defesa-ou-recurso-referente-a-fiscalizacao-de-controle-urbanistico-e-ambiental?s=6279169d6e88713dfacba115" target="_blank" rel="noopener noreferrer">Withdrawal</a>
-                <a href="https://servicos.pbh.gov.br/servicos+anexar-novos-documentos-de-defesa-ou-recurso-referentes-a-fiscalizacao-de-controle-urbanistico-e-ambiental+6364fec5e959e52d9a2c694e" target="_blank" rel="noopener noreferrer">Attach Documents</a>
+                <a href="https://servicos.pbh.gov.br/i/5e5ecdfae1bf5e706b1c9d82/servicos+defesa-contra-autos-emitidos-pela-fiscalizacao"
+                    target="_blank" rel="noopener noreferrer">Defense (1st Instance)</a>
+                <a href="https://servicos.pbh.gov.br/i/5eb40fabcf23934c43693261/servicos+recurso-contra-decisao-das-juntas-integradas-de-julgamento-fiscal-2-instancia"
+                    target="_blank" rel="noopener noreferrer">Appeal (2nd Instance)</a>
+                <a href="https://servicos.pbh.gov.br/servicos/i/620571b74164c62f6499f715/5dc8470253fd6b5bbd99185f/servicos+desistencia-de-defesa-ou-recurso-referente-a-fiscalizacao-de-controle-urbanistico-e-ambiental?s=6279169d6e88713dfacba115"
+                    target="_blank" rel="noopener noreferrer">Withdrawal</a>
+                <a href="https://servicos.pbh.gov.br/servicos+anexar-novos-documentos-de-defesa-ou-recurso-referentes-a-fiscalizacao-de-controle-urbanistico-e-ambiental+6364fec5e959e52d9a2c694e"
+                    target="_blank" rel="noopener noreferrer">Attach Documents</a>
             </div>
         </section>
 
         <section id="fluxao" class="panel">
             <h2>The process that used to be digitized became fully digital.</h2>
-            <p>The workflow grew, gained subflows and became clearer. Do not be fooled by its size: I am passionate about simplification, but simplifying does not mean reducing!</p>
-            <p>Steps were automated and timers were created. This cut my team in half and the <strong>average judgment time dropped from 90 to 30 days.</strong></p>
+            <p>The workflow grew, gained subflows and became clearer. Do not be fooled by its size: I am passionate
+                about simplification, but simplifying does not mean reducing!</p>
+            <p>Steps were automated and timers were created. This cut my team in half and the <strong>average judgment
+                    time dropped from 90 to 30 days.</strong></p>
             <div id="fluxao-wrapper">
-                 <img src="assets/fluxao.png" alt="Flow with subflow - zoomable" id="fluxao-img">
+                <img src="assets/fluxao.png" alt="Flow with subflow - zoomable" id="fluxao-img">
             </div>
-            <p class="instruction">The image "fluxao.png" includes a <strong>zoom</strong> option. Some sections were hidden for privacy and professional ethics reasons.</p>
+            <p class="instruction">The image "fluxao.png" includes a <strong>zoom</strong> option. Some sections were
+                hidden for privacy and professional ethics reasons.</p>
         </section>
-        
+
         <section id="betterflix" class="panel">
             <h2>Projects, technology and solutions</h2>
             <p>
-                My curiosity goes beyond code: I like optimizing systems, modifying hardware and creating automations on Android, Windows and Linux.
+                My curiosity goes beyond code: I like optimizing systems, modifying hardware and creating automations on
+                Android, Windows and Linux.
             </p>
             <p>
                 <strong>
@@ -158,12 +190,12 @@
         </section>
         <section id="experiences" class="panel">
             <h2>Professional Experience</h2>
-            <p><strong>A5 Labs: </strong>Python Backend Developer | 2025-present</p>
+            <p><strong>A5 Labs: </strong>Python Backend Developer | 2025</p>
             <p><strong>Freelance, Academic and Personal Projects: </strong>Full-Stack Web Developer | 2022-present</p>
             <p><strong>City Hall of Belo Horizonte: </strong>Systems Analyst | Executive Manager | 2018-present</p>
             <p><strong>GAMAA Corporate Law: </strong>Senior Attorney | 2010-2016</p>
         </section>
-        
+
         <section id="cta" class="panel">
             <h2>This is me!</h2>
             <p>If you made it this far, you can open your gift!</p>
@@ -179,18 +211,21 @@
             <p><strong>Phone:</strong> <span id="phone-number">(31)99201-4352</span></p>
             <div class="modal-buttons">
                 <button id="copy-phone" data-default-text="Copy Phone" data-copied-text="Copied!">Copy Phone</button>
-                <a href="https://www.linkedin.com/in/saulo-hugo-rossi-658760165/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="https://github.com/sauliiin?tab=repositories" target="_blank" rel="noopener noreferrer">Github</a>
+                <a href="https://www.linkedin.com/in/saulo-hugo-rossi-658760165/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/sauliiin?tab=repositories" target="_blank"
+                    rel="noopener noreferrer">Github</a>
                 <a href="assets/Saulo_Rossi_FullStack_Developer_en.pdf" download>Download CV (PDF)</a>
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@panzoom/panzoom/dist/panzoom.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
+
     <script src="js/main.js"></script>
 </body>
+
 </html>

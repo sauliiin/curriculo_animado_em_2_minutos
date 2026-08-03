@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Dashboard - Saulo Hugo Rossi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Matrix Canvas Background */
+        #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: #000;
+        }
+
+        /* Modern Glassmorphism Styling */
+        .dashboard-content {
+            padding: 50px;
+            max-width: 900px;
+            margin: 120px auto 50px;
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 255, 136, 0.15),
+                        inset 0 0 32px rgba(0, 255, 136, 0.05);
+            color: #e0fbfc;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .dashboard-content h1 { 
+            color: #00ff88; 
+            margin-bottom: 25px; 
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.6); 
+            font-size: 2.4rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+            padding-bottom: 15px;
+        }
+        
+        .dashboard-content h2, .dashboard-content h3 { 
+            margin-top: 40px; 
+            margin-bottom: 15px; 
+            color: #00e0ff; 
+            font-size: 1.5rem; 
+            text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+        }
+        
+        .dashboard-content p { 
+            margin-bottom: 18px; 
+            text-align: left; 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #b8c1ec;
+        }
+        
+        .dashboard-content ul { 
+            text-align: left; 
+            margin-left: 20px; 
+            margin-bottom: 20px; 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #b8c1ec;
+        }
+        
+        .dashboard-content li { margin-bottom: 8px; }
+        
+        .flow-chart {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 224, 255, 0.4);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 35px 0;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-line;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flow-chart:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 224, 255, 0.3);
+        }
+
+        code, strong {
+            color: #00e0ff;
+            text-shadow: 0 0 5px rgba(0, 224, 255, 0.3);
+        }
+
+        code {
+            background: rgba(0, 224, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid rgba(0, 224, 255, 0.2);
+        }
+        
+        .project-details { margin-top: 50px; }
+
+        /* Customizing Top Nav for this page */
+        .top-nav {
+            background: rgba(0, 0, 0, 0.6) !important;
+            border: 1px solid rgba(0, 255, 136, 0.3) !important;
+            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.2) !important;
+        }
+        
+        .top-nav a:hover {
+            color: #00ff88 !important;
+            text-shadow: 0 0 8px #00ff88 !important;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 224, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 224, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+
+    <nav class="top-nav">
+        <ul>
+            <li><a href="index.html">← Voltar para o Início</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#jurisprudencia">Jurisprudência</a></li>
+            <li><a href="https://github.com/sauliiin?tab=repositories" target="_blank" rel="noopener noreferrer">Outros</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-content" id="dashboard">
+        <h1>Dashboard Interativo de Autos de Infração</h1>
+        <p>O projeto transforma dados de autos de infração em um dashboard interativo. Ele tem duas partes independentes: um extrator em Python e uma interface web estática.</p>
+        
+        <div class="video-container">
+            <video src="assets/videos/dashboard.webm" autoplay loop muted playsinline controls></video>
+        </div>
+
+        <div class="flow-chart">Sistema governamental
+↓
+Selenium baixa os PDFs
+↓
+Python extrai a descrição da infração
+↓
+CSV enriquecido
+↓
+JavaScript filtra e apresenta os dados</div>
+
+        <div class="project-details">
+            <h3>1. Extração dos dados</h3>
+            <p>O script principal é <strong>scrape_autos.py</strong>.</p>
+            <p>Ele:</p>
+            <ul>
+                <li>Lê um CSV de monitoramento.</li>
+                <li>Obtém os números dos autos.</li>
+                <li>Abre várias instâncias do Chrome com Selenium.</li>
+                <li>Autentica no sistema SIF.</li>
+                <li>Navega até cada auto e baixa seu PDF.</li>
+                <li>Corrige PDFs que venham precedidos por HTML inválido.</li>
+                <li>Procura o campo "ATO OU FATO CONSTITUTIVO DA INFRAÇÃO".</li>
+                <li>Salva os resultados periodicamente em JSON.</li>
+                <li>Gera outro CSV com a descrição da infração acrescentada.</li>
+            </ul>
+            <p>A extração do PDF começa na linha 221 e o processamento paralelo começa na linha 323.</p>
+            <p>Se alguns autos não forem extraídos corretamente, o script <strong>retry_vazios.py</strong> encontra as linhas vazias e tenta novamente com heurísticas diferentes.</p>
+            <p><em>Um detalhe importante:</em> os scripts estão configurados para um caminho absoluto do Windows (<code>BASE_DIR = r"c:\Users\Saulin\Downloads\Data Science"</code>). Portanto, antes de executar em outra máquina, é necessário alterar <code>BASE_DIR</code> nos dois scripts.</p>
+
+            <h3>2. Carregamento no dashboard</h3>
+            <p>A página principal é <strong>index.html</strong>. Não existem React, backend ou banco de dados: é HTML, CSS e JavaScript puro.</p>
+            <p>Ao abrir a página, o <strong>app.js</strong> tenta carregar os dados nesta ordem:</p>
+            <ul>
+                <li><code>Input/monitoramento_com_infracoes.csv</code></li>
+                <li><code>monitoramento_com_infracoes.csv</code>, na raiz</li>
+                <li>Dados pré-compilados em <code>data.js</code></li>
+                <li>Upload manual pelo botão da página</li>
+            </ul>
+            <p>O CSV é lido no navegador com PapaParse. O código pressupõe separador <code>;</code> e as seguintes colunas principais: Período, Tipo de pedido, Decisão, Número do auto e Ato ou fato constitutivo.</p>
+
+            <h3>3. Filtros e renderização</h3>
+            <p>O estado atual dos filtros fica em um objeto JavaScript dentro de <strong>app.js</strong>. Sempre que um filtro muda, a função <code>render()</code>:</p>
+            <ul>
+                <li>Filtra e ordena os registros.</li>
+                <li>Recalcula os indicadores.</li>
+                <li>Redesenha a linha do tempo.</li>
+                <li>Redesenha o gráfico de decisões.</li>
+                <li>Agrupa os tipos de pedido.</li>
+                <li>Calcula os atos mais frequentes.</li>
+                <li>Atualiza a tabela paginada.</li>
+            </ul>
+            <p>Os gráficos não usam Chart.js: são produzidos diretamente com SVG, CSS e HTML. A tabela mostra 40 registros por página.</p>
+            <p>O filtro textual de infração normaliza acentos e maiúsculas para oferecer autocomplete, mas depois que uma sugestão é selecionada, a filtragem exige correspondência exata.</p>
+
+            <h3>4. data.js</h3>
+            <p>O script <strong>build_data.ps1</strong> converte um CSV estruturado em JavaScript e grava em <code>data.js</code>, permitindo que o dashboard tenha um cache embarcado. Atualmente esse arquivo tem cerca de 7,6 MB, enquanto o CSV de input tem aproximadamente 8,2 MB.</p>
+
+            <h3>Como rodar somente o dashboard</h3>
+            <p>Na raiz do projeto:<br>
+            <code>python -m http.server 8080</code></p>
+            <p>Depois, acesse:<br>
+            <code>http://localhost:8080</code></p>
+            <p>O servidor local é importante porque o navegador normalmente bloqueia o <code>fetch()</code> do CSV quando acessado como arquivo local.</p>
+
+            <p><strong>Em resumo:</strong> o Python coleta e enriquece os dados; o CSV é a interface entre as duas partes; e o JavaScript faz toda a análise e visualização localmente no navegador.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-content" id="jurisprudencia">
+        <h1>Acervo Pesquisável de Decisões das Juntas</h1>
+        <p>Este projeto cria e publica um acervo pesquisável de decisões das Juntas de Julgamento Fiscal de Belo Horizonte. Ele coleta votos no Google Drive, complementa as informações consultando o SIF e disponibiliza decisões e pareceres em um site público.</p>
+        
+        <div class="video-container">
+            <video src="assets/videos/juris.webm" autoplay loop muted playsinline controls></video>
+        </div>
+        <p>Atualmente, o índice contém aproximadamente:</p>
+        <ul>
+            <li>12.178 votos</li>
+            <li>314 pareceres</li>
+            <li>69 MB de dados textuais sobre votos</li>
+        </ul>
+        
+        <h2 style="text-align: center; font-size: 1.2rem; margin-top: 50px;">Visão geral do fluxo principal</h2>
+        <div class="flow-chart">Google Drive
+↓
+Download e extração de texto
+↓
+Identificação das decisões e dos autos
+↓
+Consulta dos autos no SIF
+↓
+Classificação por lei e infração
+↓
+Índice SQLite e arquivos JSONL
+↓
+Site público de pesquisa</div>
+
+        <div class="project-details">
+            <h3>1. Coleta dos votos</h3>
+            <p>O núcleo do projeto é o script <strong>baixar_e_organizar_por_ato.py</strong>. Ele procura no Google Drive:</p>
+            <ul>
+                <li>Pastas <code>SESSÃO NNN</code>, relativas à primeira instância.</li>
+                <li>Pastas com variações de <code>Votos dos Relatores</code>, relativas à segunda instância.</li>
+            </ul>
+            <p>São aceitos: PDF, Google Docs, DOCX e DOC.</p>
+            <p>O acesso ao Drive usa OAuth em modo somente leitura. Arquivos como <code>credentials.json</code> e <code>token.json</code> ficam locais e são ignorados pelo Git.</p>
+            <p>O processamento é concorrente e dividido em filas: <code>indexadores → downloaders → organizadores</code>. Isso permite trabalhar com milhares de documentos sem precisar esperar uma etapa inteira terminar antes de iniciar a seguinte.</p>
+
+            <h3>2. Identificação das decisões</h3>
+            <p>Depois de extrair o texto, o sistema verifica se o documento realmente é uma decisão. Ele descarta, por exemplo: atas de sessão, controles de votação, documentos genéricos, arquivos sem a expressão "DISPOSITIVO DA DECISÃO" e arquivos cujo texto não pôde ser extraído.</p>
+            <p>Para cada decisão válida, são extraídos: Protocolo, Assunto, Instância, Números dos autos e o Texto integral da decisão.</p>
+
+            <h3>3. Consulta ao SIF</h3>
+            <p>Para cada auto encontrado, o pipeline consulta o SIF e lê o PDF correspondente. Do auto são extraídos dados como: Número e tipo do auto, Autuado, Infração, Dispositivo legal transgredido, Local da constatação e Lei aplicável.</p>
+            <p>Esses dados permitem organizar fisicamente os votos desta forma:</p>
+            <pre style="background: rgba(0, 0, 0, 0.4); padding: 20px; border-radius: 8px; color: #00ff88; overflow-x: auto; font-family: monospace; line-height: 1.4; border: 1px solid rgba(0, 224, 255, 0.2); margin: 20px 0;">pdfs_por_lei_e_ato/
+├── 1a_instancia/
+│   └── LEI 8616-03/
+│       └── DEIXAR DE CONSERVAR O PASSEIO/
+└── 2a_instancia/
+    └── ...</pre>
+            <p>Um voto pode aparecer em mais de uma pasta quando contém autos relacionados a leis ou infrações diferentes. O arquivo <code>assuntos.csv</code> também registra uma visão tabular com protocolo, assunto e atos.</p>
+
+            <h3>4. Acervo público</h3>
+            <p>O script <strong>preparar_acervo_publico.py</strong> transforma o material coletado no índice utilizado pelo site. Diferentemente da organização por lei e ato, o acervo público mantém apenas uma cópia de cada voto e produz dois formatos:</p>
+            <ul>
+                <li><code>indice_busca.db</code>: banco SQLite com FTS5 para busca local rápida.</li>
+                <li><strong>votos.jsonl</strong>: índice estático publicado no GitHub Pages.</li>
+            </ul>
+            <p>Cada linha do JSONL contém uma decisão completa, incluindo texto, autos, metadados e links públicos do Drive. O processamento pode ser incremental: o arquivo <code>marco_atualizacao.json</code> registra o último estado processado, e o Drive é consultado somente por arquivos novos ou modificados.</p>
+
+            <h3>5. Pareceres</h3>
+            <p>O script <strong>preparar_pareceres.py</strong> mantém um acervo separado de pareceres. Além da extração normal de texto, ele suporta OCR com Tesseract para PDFs digitalizados, imagens incorporadas em DOCX e documentos sem camada de texto. O resultado é publicado em <code>pareceres.jsonl</code>.</p>
+
+            <h3>6. Site de busca</h3>
+            <p>O site fica em <code>site_publico/index.html</code> (o index da raiz apenas redireciona para ele). A interface permite:</p>
+            <ul>
+                <li>Buscar uma expressão exata ou todas as palavras informadas.</li>
+                <li>Filtrar por primeira/segunda instância e por mês/ano.</li>
+                <li>Ver trechos com os termos destacados.</li>
+                <li>Visualizar o documento pelo Google Drive e consultar informações dos autos.</li>
+                <li>Alternar para a busca de pareceres.</li>
+            </ul>
+            <p>O frontend possui dois modos: no GitHub Pages ele carrega todo o <code>votos.jsonl</code> e pesquisa no navegador. Num Servidor local usa a API de <code>site_server.py</code> e o SQLite FTS5. O modo estático simplifica a hospedagem, mas tem um custo: o navegador precisa baixar aproximadamente 69 MB de votos antes de pesquisar.</p>
+
+            <h3>7. Atualização e publicação</h3>
+            <p>O script <strong>atualizar_tudo.sh</strong> automatiza a operação: organiza novos votos por lei e ato, atualiza o acervo público, reaplica os links do Drive e atualiza os pareceres. Em seguida faz <code>git add</code>, <code>commit</code> e <code>push</code>. Portanto, esse script não é apenas local: executá-lo pode publicar alterações diretamente no repositório remoto.</p>
+
+            <h3>Tecnologias usadas</h3>
+            <ul>
+                <li>Python, Google Drive API e OAuth</li>
+                <li>Requests e BeautifulSoup para o SIF</li>
+                <li>pdfplumber para PDFs, docx2txt para DOCX, LibreOffice para DOC antigo</li>
+                <li>Tesseract para OCR</li>
+                <li>SQLite com FTS5</li>
+                <li>HTML, CSS e JavaScript puro, GitHub Pages</li>
+            </ul>
+
+            <p><strong>Em resumo:</strong> o projeto é uma combinação de coletor documental, extrator de informações jurídicas, classificador, mecanismo de busca e site público. O pipeline pesado roda localmente; o resultado final é versionado como JSONL e pode ser servido sem backend.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- MATRIX RAIN EFFECT ---
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                
+                // Add some glow to the letters
+                ctx.shadowBlur = 5;
+                ctx.shadowColor = '#0F0';
+                
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                ctx.shadowBlur = 0; // Reset shadow for background
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

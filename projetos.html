@@ -148,6 +148,8 @@
             <li><a href="index.html">← Voltar para o Início</a></li>
             <li><a href="#dashboard">Dashboard</a></li>
             <li><a href="#jurisprudencia">Jurisprudência</a></li>
+            <li><a href="#jediflix">Jediflix</a></li>
+            <li><a href="#hybrid">Painel Híbrido</a></li>
             <li><a href="https://github.com/sauliiin?tab=repositories" target="_blank" rel="noopener noreferrer">Outros</a></li>
         </ul>
     </nav>
@@ -319,6 +321,80 @@ Site público de pesquisa</div>
             </ul>
 
             <p><strong>Em resumo:</strong> o projeto é uma combinação de coletor documental, extrator de informações jurídicas, classificador, mecanismo de busca e site público. O pipeline pesado roda localmente; o resultado final é versionado como JSONL e pode ser servido sem backend.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-content" id="jediflix">
+        <h1>Jediflix: Streaming Customizado (Kodi)</h1>
+        <p>Este projeto consiste em uma interface (skin) customizada para o aplicativo Kodi, transformando-o em uma plataforma de streaming completa, rica e unificada. O desenvolvimento combina <strong>Python</strong> para a lógica de backend e requisições, e <strong>XML</strong> para a estruturação da interface visual.</p>
+        
+        <div class="video-container">
+            <video src="assets/videos/jediflix.webm" autoplay loop muted playsinline controls></video>
+        </div>
+
+        <div class="project-details">
+            <h3>Integração Poderosa de APIs</h3>
+            <p>Para garantir que o catálogo seja dinâmico, rico em detalhes e sempre atualizado, o aplicativo consome dados simultaneamente de diversas fontes conceituadas:</p>
+            <ul>
+                <li><strong>MDBList & TMDb:</strong> Metadados principais de filmes e séries.</li>
+                <li><strong>OMDb & IMDb:</strong> Avaliações consolidadas e notas da crítica.</li>
+                <li><strong>Wikipédia:</strong> Biografias contextuais e histórico da produção.</li>
+                <li><strong>YouTube:</strong> Trailers e vídeos promocionais em alta qualidade.</li>
+            </ul>
+
+            <h3>Principais Funcionalidades</h3>
+            <p>A aplicação vai muito além de um simples reprodutor de vídeo, proporcionando uma experiência imersiva de exploração do catálogo. Você pode:</p>
+            <ul>
+                <li><strong>Reproduzir Filmes:</strong> Acesso direto e fluido aos vídeos integrados.</li>
+                <li><strong>Ver Informações de Atores:</strong> Biografias ricas extraídas dinamicamente, mantendo o usuário engajado no aplicativo.</li>
+                <li><strong>Navegar pela Filmografia:</strong> Exploração interativa pelos trabalhos anteriores do elenco e diretores.</li>
+                <li><strong>Acessar Reviews e Notas:</strong> Agregação de críticas reais e avaliações que auxiliam na escolha do que assistir.</li>
+            </ul>
+
+            <p><strong>Em resumo:</strong> A orquestração de APIs utilizando Python aliada à flexibilidade do XML no Kodi entrega um nível de requinte e informação interligada comparável às maiores plataformas comerciais de streaming do mercado.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-content" id="hybrid">
+        <h1>Painel Central de Férias e Trabalho Híbrido</h1>
+        <p>Uma aplicação web moderna e interativa, desenvolvida para gerenciar escalas de trabalho e períodos de descanso de uma equipe de forma dinâmica e eficiente. Utilizando o <strong>Firebase (Firestore)</strong> como backend <em>serverless</em> em tempo real e <strong>JavaScript Vanilla</strong> para o frontend, a ferramenta resolve o desafio de organizar a rotina do time com toques de gamificação e humor.</p>
+        
+        <div class="video-container">
+            <video src="assets/videos/hybrid.webm" autoplay loop muted playsinline controls></video>
+        </div>
+
+        <div class="project-details">
+            <h3>1. Sistema Inteligente de Perfis e Permissões</h3>
+            <p>A experiência abandona o login tradicional em prol de uma interface fluida com avatares customizáveis e seleção via dropdown. A segurança e organização são mantidas através de papéis bem definidos:</p>
+            <ul>
+                <li><strong>Administrador (Mestre Yoda):</strong> Perfil protegido por senha com visão global do histórico e poder de realizar ajustes manuais na gestão de equipe.</li>
+                <li><strong>Gerentes e Secretários:</strong> Perfis com acesso às escalas e funcionalidades colaborativas baseadas na função desempenhada.</li>
+            </ul>
+
+            <h3>2. Gestão Dinâmica de Férias</h3>
+            <p>O painel elimina a burocracia do agendamento de descanso:</p>
+            <ul>
+                <li>Marcação de até 3 períodos (limite de 25 dias úteis), com o sistema descontando automaticamente finais de semana e feriados.</li>
+                <li>Alertas visuais preventivos contra conflitos de agenda (ex: ausência simultânea de colegas em funções essenciais).</li>
+                <li>Um <strong>Mapa de Férias Geral</strong> limpo e intuitivo, filtrado inteligentemente para exibir apenas eventos presentes e futuros (exceto para o administrador, que possui visão completa).</li>
+            </ul>
+
+            <h3>3. Calendário Híbrido Integrado</h3>
+            <p>A adaptação aos novos modelos de trabalho é tratada de forma nativa:</p>
+            <ul>
+                <li>Suporte a múltiplos regimes flexíveis (ex: 3 dias presenciais e 2 remotos, ou dias fixos na semana).</li>
+                <li>Visões divididas entre o calendário individual de cada funcionário e um painel consolidado ("Quem Está Presencial na Semana"), garantindo transparência total sobre a presença da equipe no escritório.</li>
+            </ul>
+
+            <h3>4. A "Roleta Maluca" (Sistema de Substituições)</h3>
+            <p>Para evitar falhas na operação, o sistema traz um mecanismo automático e divertido:</p>
+            <ul>
+                <li>Quando um funcionário crucial (como um Secretário) marca férias em um dia de reunião, o algoritmo detecta o desfalque automaticamente.</li>
+                <li>A <strong>"Roleta Maluca"</strong> entra em ação: sorteia um substituto elegível baseando-se em um balanceamento justo da carga de trabalho (priorizando quem cobriu menos ausências recentemente).</li>
+                <li>O administrador sempre tem o poder de substituir manualmente o resultado sorteado, caso seja necessário.</li>
+            </ul>
+
+            <p><strong>Em resumo:</strong> Arquitetada com HTML/CSS puro e lógica robusta em JavaScript, a ferramenta transforma o que seria uma planilha complexa em uma experiência de produtividade gamificada e altamente funcional, perfeitamente orquestrada com a escalabilidade do Firebase.</p>
         </div>
     </div>
 

@@ -13,14 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggle.textContent = isCyberpunk ? 'Cyberpunk' : 'Standard';
         });
 
-        // Carrega o tema salvo
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'cyberpunk') {
-            document.body.classList.add('cyberpunk-theme');
-            themeToggle.textContent = 'Cyberpunk';
-        } else {
-            themeToggle.textContent = 'Standard';
-        }
+        // Força o tema padrão para 'standard' no carregamento
+        document.body.classList.remove('cyberpunk-theme');
+        themeToggle.textContent = 'Standard';
+        localStorage.setItem('theme', 'standard');
     }
 
     // --- BARRA DE PROGRESSO (Controlada pelo Scroll) ---
@@ -70,7 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
         .to('#foto2', { 
             opacity: 1, 
             duration: 0.7, 
-            ease: 'power2.inOut' 
+            ease: 'power2.inOut',
+            onStart: () => {
+                document.body.classList.add('cyberpunk-theme');
+                const themeToggle = document.getElementById('theme-toggle');
+                if (themeToggle) themeToggle.textContent = 'Cyberpunk';
+                localStorage.setItem('theme', 'cyberpunk');
+            }
         }, "transition-start");
 
     // --- 2. HOBBIES ---

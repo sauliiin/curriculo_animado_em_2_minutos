@@ -1,0 +1,55 @@
+<app-matrix-rain />
+<app-top-nav [items]="nav()" />
+
+<main class="projects">
+  <header class="intro">
+    <span class="eyebrow" [appScramble]="t().eyebrow"></span>
+    <h1 class="glitch" [appSplitText]="t().title" [splitDelay]="0.3"></h1>
+    <p appReveal="blur" [revealDelay]="0.6">{{ t().subtitle }}</p>
+  </header>
+
+  @for (project of t().projects; track project.id; let i = $index) {
+    <article class="project" [id]="project.id" appReveal="up">
+      <header class="project-head">
+        <span class="index" aria-hidden="true">{{ number(i) }}</span>
+        <h2 [appScramble]="project.title"></h2>
+        <ul class="tags" [attr.aria-label]="'Stack'">
+          @for (tag of project.tags; track tag) {
+            <li class="chip">{{ tag }}</li>
+          }
+        </ul>
+        @if (project.links) {
+          <div class="links">
+            @for (link of project.links; track link.href) {
+              <a class="project-link" [href]="link.href" target="_blank" rel="noopener noreferrer">{{ link.label }} ↗</a>
+            }
+          </div>
+        }
+      </header>
+
+      @for (block of project.blocks; track $index) {
+        @if (block.type === 'p') {
+          <p [innerHTML]="block.html"></p>
+        } @else if (block.type === 'list') {
+          <ul class="list">
+            @for (item of block.items; track $index) {
+              <li [innerHTML]="item"></li>
+            }
+          </ul>
+        } @else if (block.type === 'heading') {
+          <h3>{{ block.text }}</h3>
+        } @else if (block.type === 'flow') {
+          <app-flow-chart [steps]="block.steps" />
+        } @else if (block.type === 'tree') {
+          <pre class="tree">{{ block.text }}</pre>
+        } @else if (block.type === 'video') {
+          <div class="video neon-frame">
+            <video appAutoplayInView [src]="block.src" loop muted playsinline controls preload="none"></video>
+          </div>
+        } @else if (block.type === 'summary') {
+          <p class="summary" [innerHTML]="block.html"></p>
+        }
+      }
+    </article>
+  }
+</main>

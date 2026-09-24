@@ -1,0 +1,255 @@
+:host {
+  --project-accent: #00ff88;
+  --project-glow: rgba(0, 255, 136, 0.3);
+  display: block;
+}
+
+:host-context(body.cyberpunk-theme) {
+  --project-accent: var(--primary);
+  --project-glow: color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 8rem 1.2rem 9rem;
+}
+
+.intro {
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: var(--project-accent);
+}
+
+.intro h1 {
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  font-weight: 800;
+  color: #e0fbfc;
+  text-shadow:
+    0 0 20px var(--project-glow),
+    0 0 50px var(--project-glow);
+}
+
+.intro p {
+  margin: 1.2rem auto 0;
+  text-align: center;
+  color: #b8c1ec;
+}
+
+.project {
+  position: relative;
+  padding: clamp(1.6rem, 5vw, 3.2rem);
+  color: #e0fbfc;
+  background: rgba(10, 10, 15, 0.72);
+  backdrop-filter: blur(15px);
+  border: 1px solid color-mix(in srgb, var(--project-accent) 30%, transparent);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px color-mix(in srgb, var(--project-accent) 15%, transparent),
+    inset 0 0 32px color-mix(in srgb, var(--project-accent) 5%, transparent);
+  scroll-margin-top: 90px;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.project:hover {
+  border-color: color-mix(in srgb, var(--project-accent) 60%, transparent);
+  box-shadow:
+    0 12px 60px color-mix(in srgb, var(--project-accent) 25%, transparent),
+    inset 0 0 40px color-mix(in srgb, var(--project-accent) 8%, transparent);
+}
+
+.project-head {
+  position: relative;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--project-accent) 20%, transparent);
+}
+
+.index {
+  position: absolute;
+  top: -1.2rem;
+  right: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--project-accent) 45%, transparent);
+  pointer-events: none;
+  user-select: none;
+}
+
+h2 {
+  position: relative;
+  max-width: 85%;
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  color: var(--project-accent);
+  text-shadow: 0 0 15px var(--project-glow);
+}
+
+h3 {
+  margin: 2.4rem 0 1rem;
+  font-size: 1.4rem;
+  color: #00e0ff;
+  text-shadow: 0 0 10px rgba(0, 224, 255, 0.4);
+}
+
+h3::before {
+  content: '▹ ';
+  color: var(--project-accent);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.project-link {
+  display: inline-block;
+  max-width: none;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+  background: var(--project-accent);
+  border-radius: 999px;
+  box-shadow: 0 0 14px var(--project-glow);
+  transition: box-shadow 0.3s ease;
+}
+
+.project-link:hover {
+  text-decoration: none;
+  box-shadow: 0 0 26px var(--project-accent);
+}
+
+:host-context(body.cyberpunk-theme) .project-link {
+  border-radius: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  list-style: none;
+}
+
+.project .chip {
+  color: var(--project-accent);
+  border-color: color-mix(in srgb, var(--project-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--project-accent) 8%, transparent);
+}
+
+.project .chip:hover {
+  color: #000;
+  background: var(--project-accent);
+}
+
+p,
+.list {
+  max-width: none;
+  margin: 0 0 1.1rem;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  text-align: left;
+  color: #b8c1ec;
+}
+
+.list {
+  padding-left: 1.3rem;
+}
+
+.list li {
+  margin-bottom: 0.45rem;
+}
+
+.list li::marker {
+  color: var(--project-accent);
+}
+
+:host ::ng-deep code {
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: #00e0ff;
+  background: rgba(0, 224, 255, 0.1);
+  border: 1px solid rgba(0, 224, 255, 0.2);
+  border-radius: 6px;
+}
+
+:host ::ng-deep :is(p, li) strong {
+  color: #00e0ff;
+  text-shadow: 0 0 5px rgba(0, 224, 255, 0.35);
+}
+
+.summary {
+  margin-top: 2rem;
+  padding: 1.2rem 1.4rem;
+  background: color-mix(in srgb, var(--project-accent) 7%, transparent);
+  border-left: 3px solid var(--project-accent);
+  border-radius: 0 12px 12px 0;
+}
+
+.tree {
+  margin: 1.2rem 0;
+  padding: 1.2rem;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  line-height: 1.45;
+  color: var(--project-accent);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(0, 224, 255, 0.2);
+  border-radius: 8px;
+}
+
+.video {
+  margin: 1.8rem 0;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+
+:host-context(body.cyberpunk-theme) :is(.project, .summary, .video, .tree) {
+  border-radius: 0;
+}
+
+:host-context(body.cyberpunk-theme) .intro h1 {
+  color: var(--primary);
+}
+
+@media (max-width: 600px) {
+  .projects {
+    padding-top: 5.5rem;
+  }
+
+  h2 {
+    max-width: none;
+  }
+
+  .index {
+    opacity: 0.35;
+  }
+}

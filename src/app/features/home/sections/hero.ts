@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { ContactService } from '../../../core/contact.service';
 import { I18nService } from '../../../core/i18n/i18n.service';
-import { GITHUB_URL, LINKEDIN_URL } from '../../../core/links';
+import { GITHUB_URL, LINKEDIN_URL, PORTFOLIO_URL } from '../../../core/links';
 import { MotionService } from '../../../core/motion.service';
 import { ThemeService } from '../../../core/theme.service';
 import { gsap } from '../../../core/gsap';
@@ -36,6 +36,9 @@ const INTRO_DELAY_MS = 4000;
       <h2 class="hero-subtitle" [class.is-highlighted]="revealed()" [appScramble]="subtitle()"></h2>
 
       <div class="ctas" appReveal="up" [revealDelay]="0.9" revealStagger=":scope > *">
+        <a class="btn btn-portfolio" appMagnetic [href]="portfolio" target="_blank" rel="noopener">
+          🚀 {{ t().ctaPortfolio }} <span aria-hidden="true">↗</span>
+        </a>
         <button type="button" class="btn btn-primary" appMagnetic (click)="openContact($event)">
           💬 {{ t().ctaContact }}
         </button>
@@ -319,6 +322,7 @@ export class Hero {
   protected readonly contact = computed(() => this.i18n.t().home.contact);
   protected readonly linkedin = LINKEDIN_URL;
   protected readonly github = GITHUB_URL;
+  protected readonly portfolio = PORTFOLIO_URL;
   protected readonly revealed = signal(this.themeService.heroIntroDone);
   protected readonly glitching = signal(false);
   protected readonly subtitle = computed(() => (this.revealed() ? this.t().subtitleAfter : this.t().subtitle));

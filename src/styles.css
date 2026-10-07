@@ -688,6 +688,21 @@ body.cyberpunk-theme .split-char:hover {
     0 0 50px color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
+/* Portfólio: destaque próprio para não competir com o botão de contato. */
+.btn-portfolio {
+  color: var(--bg-1);
+  background: linear-gradient(120deg, var(--highlight), var(--primary));
+  border: 0;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--highlight) 50%, transparent);
+}
+
+.btn-portfolio:hover {
+  color: var(--bg-1);
+  box-shadow:
+    0 0 26px var(--highlight),
+    0 0 50px color-mix(in srgb, var(--primary) 60%, transparent);
+}
+
 .btn-ghost {
   color: var(--text);
   background: color-mix(in srgb, var(--primary) 8%, transparent);

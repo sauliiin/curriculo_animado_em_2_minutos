@@ -19,6 +19,7 @@ export const CONTENT_PT: SiteContent = {
 
     hero: {
       badge: 'Aberto a oportunidades · Remoto, híbrido ou mudança de cidade',
+      ctaPortfolio: 'Ver portfólio completo',
       ctaContact: 'Falar comigo',
       ctaCv: 'Baixar CV',
       title: 'Meu currículo animado em 2 minutos',

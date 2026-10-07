@@ -19,6 +19,7 @@ export const CONTENT_EN: SiteContent = {
 
     hero: {
       badge: 'Open to opportunities · Remote, hybrid or relocation',
+      ctaPortfolio: 'See full portfolio',
       ctaContact: 'Get in touch',
       ctaCv: 'Download CV',
       title: 'My 2-minute animated resume',

@@ -69,6 +69,7 @@ export interface HomeContent {
   nav: NavItem[];
   hero: {
     badge: string;
+    ctaPortfolio: string;
     ctaContact: string;
     ctaCv: string;
     title: string;

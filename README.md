@@ -2,6 +2,8 @@
 
 Minha tragetória em 2 minutos 😎
 
+> 🚀 **Portfólio completo:** [sauliiin.github.io/portfolio](https://sauliiin.github.io/portfolio/) — projetos, Python Lab e meu perfil de analista de sistemas.
+
 Currículo animado feito em **Angular 22** (standalone components, signals, zoneless) e **TypeScript**, com animações em GSAP.
 
 ## Rodando localmente
